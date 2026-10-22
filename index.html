@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Luljeta Rama Muçaj: visual artist, graphic designer and art teacher from Prishtina.">
+<title>Luljeta Rama Muçaj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400&family=Reenie+Beanie&display=swap">
+<style>
+/* base reset (the artifact viewer supplied this) */
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* Layout: a sketchbook — five pages, each a spread with a narrow margin column of pencil notes beside the page. Photos are shown in greyscale so the site stays black and white. */
+:root {
+  --paper: #ffffff;
+  --ink: #0b0b0b;
+  --graphite: #5c5c5c;
+  --rule: #d9d9d9;
+  --wash: #f4f4f4;
+  --canvas-filter: none;
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --hand: "Reenie Beanie", "Bradley Hand", "Segoe Print", cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0b0b0b; --ink: #f2f2f2; --graphite: #9a9a9a; --rule: #2a2a2a; --wash: #151515;
+    --canvas-filter: invert(1); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0b0b0b; --ink: #f2f2f2; --graphite: #9a9a9a; --rule: #2a2a2a; --wash: #151515;
+  --canvas-filter: invert(1); color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, .photo-btn:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
+p { margin: 0 0 1em; }
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+.note {
+  font-family: var(--hand);
+  font-size: 24px;
+  line-height: 1;
+  color: var(--graphite);
+}
+.more {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .04em;
+  border-bottom: 1px solid var(--ink); padding-bottom: 2px;
+  display: inline-block; transition: opacity .2s;
+}
+.more:hover { opacity: .6; }
+
+/* photos: always greyscale */
+.photo {
+  display: block; width: 100%; max-width: 100%; height: auto;
+  filter: grayscale(1) contrast(1.04);
+  background: var(--wash);
+}
+.photo-btn { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; width: 100%; overflow: hidden; }
+.photo-btn .photo { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.photo-btn:hover .photo { transform: scale(1.025); }
+
+/* header */
+header .wrap {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 24px; flex-wrap: wrap; padding-block: 28px;
+}
+.sig { font-style: italic; font-size: 20px; font-weight: 400; letter-spacing: -0.01em; }
+nav { display: flex; gap: 22px; flex-wrap: wrap; }
+nav a { font-family: var(--mono); font-size: 12px; color: var(--graphite); transition: color .2s; position: relative; }
+nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
+nav a[aria-current="page"]::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 1px; background: var(--ink);
+}
+
+/* views */
+[data-view] { animation: turn .45s cubic-bezier(.2,.7,.2,1); }
+@keyframes turn { from { opacity: .35; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* page heads for inner pages */
+.pagehead .wrap {
+  display: grid; grid-template-columns: 200px minmax(0, 1fr);
+  gap: 40px; padding-block: 40px 56px;
+}
+.pagehead h1 {
+  font-size: 34px; line-height: 1.2; font-weight: 300; font-style: italic;
+  letter-spacing: -0.015em; margin: 0 0 18px; text-wrap: balance; max-width: 18em;
+}
+.pagehead p { color: var(--graphite); max-width: 36em; margin: 0; }
+
+/* hero */
+.hero .wrap {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 56px; padding-block: 32px 72px; align-items: end;
+}
+.intro { display: flex; flex-direction: column; gap: 28px; padding-bottom: 8px; }
+.intro h1 {
+  font-size: 30px; line-height: 1.25; font-weight: 300; font-style: italic;
+  letter-spacing: -0.015em; margin: 0; text-wrap: balance; max-width: 15em;
+}
+.intro p { margin: 0; color: var(--graphite); max-width: 30em; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; margin: 0; font-size: 15px; }
+.facts dt { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--graphite); padding-top: 3px; }
+.facts dd { margin: 0; }
+
+.sheet { position: relative; min-width: 0; }
+.sheet-frame {
+  position: relative; border: 1px solid var(--rule); background: var(--paper);
+  aspect-ratio: 4 / 3; max-width: 100%; touch-action: none;
+}
+#pad { width: 100%; height: 100%; display: block; cursor: crosshair; filter: var(--canvas-filter); }
+.sheet-hint { position: absolute; top: 14px; right: 18px; pointer-events: none; transition: opacity .6s; }
+.sheet-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+.tools { display: flex; gap: 4px; flex-wrap: wrap; }
+.tool {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+  background: none; color: var(--graphite); border: 1px solid transparent;
+  padding: 6px 10px; cursor: pointer; transition: color .2s, border-color .2s;
+}
+.tool:hover { color: var(--ink); }
+.tool[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
+
+/* sections */
+section { border-top: 1px solid var(--rule); }
+.spread {
+  display: grid; grid-template-columns: 200px minmax(0, 1fr);
+  gap: 40px; padding-block: 72px;
+}
+.margin { display: flex; flex-direction: column; gap: 10px; }
+.margin .note { transform: rotate(-3deg); transform-origin: left; }
+h2 { font-size: 26px; font-weight: 300; font-style: italic; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance; }
+h3 { font-weight: 400; }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+.two p { max-width: 34em; }
+.head-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+.head-row h2 { margin: 0; }
+
+blockquote {
+  margin: 0; font-size: 22px; line-height: 1.4; font-style: italic;
+  border-left: 1px solid var(--ink); padding-left: 24px; align-self: start;
+}
+blockquote cite { display: block; margin-top: 14px; font-style: normal; }
+
+/* news list */
+.news { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.news li { border-bottom: 1px solid var(--rule); }
+.news a {
+  display: grid; grid-template-columns: 110px minmax(0, 1fr) auto;
+  gap: 24px; padding-block: 20px; align-items: baseline;
+  transition: padding .3s cubic-bezier(.2,.7,.2,1);
+}
+.news a:hover { padding-left: 10px; }
+.news time { font-family: var(--mono); font-size: 12px; color: var(--graphite); font-variant-numeric: tabular-nums; }
+.news h3 { margin: 0; font-size: 20px; letter-spacing: -0.01em; }
+.news h3 span { display: block; font-size: 15px; font-weight: 300; color: var(--graphite); margin-top: 2px; }
+.news .arrow { font-family: var(--mono); font-size: 12px; color: var(--graphite); }
+
+/* about */
+.portrait-wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px; align-items: end; }
+.portrait-wrap figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.areas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.areas li { border-top: 1px solid var(--ink); padding-top: 16px; }
+.areas h3 { margin: 0 0 6px; font-size: 20px; font-style: italic; font-weight: 300; }
+.areas p { font-size: 15px; color: var(--graphite); margin: 0; }
+
+.cv { margin: 0; display: grid; grid-template-columns: 110px minmax(0, 1fr); border-top: 1px solid var(--ink); }
+.cv dt, .cv dd { padding-block: 14px; border-bottom: 1px solid var(--rule); margin: 0; }
+.cv dt { font-family: var(--mono); font-size: 12px; color: var(--graphite); font-variant-numeric: tabular-nums; padding-top: 18px; }
+.cv dd span { display: block; font-size: 14px; color: var(--graphite); }
+
+/* work */
+.project {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 48px; align-items: start;
+}
+.project + .project { margin-top: 72px; padding-top: 72px; border-top: 1px solid var(--rule); }
+.project:nth-child(even) .project-media { order: 2; }
+.project-media { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.project-text { min-width: 0; }
+.project-text h3 { font-size: 28px; font-weight: 300; font-style: italic; margin: 6px 0 18px; letter-spacing: -0.01em; text-wrap: balance; }
+.project-text .facts { margin-top: 24px; }
+
+/* the white-space poster, set in type */
+.ws {
+  aspect-ratio: 7 / 10; max-width: 100%; border: 1px solid var(--ink);
+  position: relative; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;
+  background: var(--paper);
+}
+.ws-word { font-family: var(--mono); font-size: clamp(28px, 5vw, 52px); line-height: .95; letter-spacing: -0.02em; }
+.ws-word span { display: block; }
+.ws-word span:nth-child(2) { padding-left: 1.2em; }
+.ws-word span:nth-child(4) { padding-left: 2.4em; }
+.ws-corner { position: absolute; right: 0; bottom: 0; width: 34%; aspect-ratio: 1; background: var(--ink); clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+.ws .label { position: relative; z-index: 1; max-width: 60%; }
+
+/* teaching */
+.subjects { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.subject {
+  display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 24px; padding-block: 22px; border-bottom: 1px solid var(--rule); align-items: baseline;
+}
+.subject h3 { margin: 0; font-size: 21px; letter-spacing: -0.01em; }
+.subject p { margin: 0; font-size: 15px; color: var(--graphite); }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; counter-reset: s; }
+.steps li { counter-increment: s; border-top: 1px solid var(--ink); padding-top: 16px; }
+.steps li::before { content: counter(s) "."; font-family: var(--mono); font-size: 12px; color: var(--graphite); display: block; margin-bottom: 10px; }
+.steps h3 { margin: 0 0 6px; font-size: 20px; font-style: italic; font-weight: 300; }
+.steps p { font-size: 15px; color: var(--graphite); margin: 0; }
+
+/* contact */
+.contact-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.contact-row > div { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.mail { font-size: 22px; font-style: italic; word-break: break-word; user-select: all; }
+.btn {
+  align-self: flex-start;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+  background: none; color: var(--ink); border: 1px solid var(--ink); padding: 8px 14px; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn:hover, .btn.solid { background: var(--ink); color: var(--paper); }
+.btn.solid:hover { opacity: .8; }
+
+form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 32px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--graphite); }
+input, select, textarea {
+  font: inherit; font-size: 17px; color: var(--ink); background: transparent;
+  border: 0; border-bottom: 1px solid var(--ink); border-radius: 0; padding: 6px 0; width: 100%;
+}
+textarea { resize: vertical; min-height: 110px; line-height: 1.5; }
+select { appearance: none; cursor: pointer; }
+select option { background: var(--paper); color: var(--ink); }
+.form-foot { grid-column: 1 / -1; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.form-status { font-size: 15px; color: var(--graphite); display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.draft {
+  grid-column: 1 / -1; border: 1px solid var(--rule); padding: 20px; background: var(--wash);
+  font-family: var(--mono); font-size: 13px; white-space: pre-wrap; line-height: 1.6; margin: 0; overflow-x: auto;
+}
+
+/* lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 20; background: var(--paper);
+  display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 40px; align-items: center;
+  padding: calc(32px + env(safe-area-inset-top, 0px)) max(24px, env(safe-area-inset-right, 0px)) calc(32px + env(safe-area-inset-bottom, 0px)) max(24px, env(safe-area-inset-left, 0px));
+}
+.lightbox img { max-height: calc(100vh - 64px); width: auto; max-width: 100%; justify-self: center; filter: grayscale(1) contrast(1.04); }
+.lb-text { display: flex; flex-direction: column; gap: 12px; }
+.lb-title { font-size: 22px; font-style: italic; line-height: 1.3; }
+
+footer .wrap {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px;
+  padding-block: 40px 48px; border-top: 1px solid var(--rule); align-items: end;
+}
+footer .foot-nav { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 10px; }
+footer .foot-nav a { font-family: var(--mono); font-size: 12px; color: var(--graphite); }
+footer .foot-nav a:hover { color: var(--ink); }
+
+@media (max-width: 860px) {
+  .hero .wrap, .pagehead .wrap { grid-template-columns: 1fr; gap: 24px; }
+  .hero .wrap { gap: 36px; }
+  .spread { grid-template-columns: 1fr; gap: 20px; padding-block: 56px; }
+  .margin { flex-direction: row; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .two, .portrait-wrap, .project { grid-template-columns: 1fr; gap: 28px; }
+  .project:nth-child(even) .project-media { order: 0; }
+  .project + .project { margin-top: 56px; padding-top: 56px; }
+  .areas, .steps { grid-template-columns: 1fr; }
+  .subject { grid-template-columns: 1fr; gap: 6px; }
+  .news a { grid-template-columns: 1fr; gap: 4px; }
+  .news .arrow { display: none; }
+  .contact-row { grid-template-columns: 1fr; }
+  .lightbox { grid-template-columns: 1fr; align-content: center; gap: 20px; }
+  .lightbox img { max-height: 62vh; }
+}
+@media (max-width: 480px) {
+  .intro h1 { font-size: 25px; }
+  .pagehead h1 { font-size: 28px; }
+  form { grid-template-columns: 1fr; }
+  footer .wrap { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="sig" href="#home">Luljeta Rama Muçaj</a>
+    <nav aria-label="Pages">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<div data-view="home">
+  <div class="hero">
+    <div class="wrap">
+      <div class="intro">
+        <span class="label">Visual artist · Graphic designer · Lecturer</span>
+        <h1>“Art is the voice of the soul, speaking in colors beyond words.”</h1>
+        <p>Visual artist and graphic designer from Prishtina, with more than twenty years of teaching art to children and students.</p>
+        <dl class="facts">
+          <dt>Based in</dt><dd>Prishtina, Kosovo</dd>
+          <dt>Teaches</dt><dd>“Ismail Qemali” school and the Faculty of Arts, University of Prishtina</dd>
+          <dt>Research</dt><dd>PhD candidate, History of Art, UKIM Skopje</dd>
+        </dl>
+      </div>
+      <div class="sheet">
+        <div class="sheet-frame">
+          <canvas id="pad" width="1200" height="900" aria-label="Drawing sheet. Draw with your mouse or finger."></canvas>
+          <span class="note sheet-hint" id="hint">go on, draw something</span>
+        </div>
+        <div class="sheet-meta">
+          <span class="label">Warm-up still life · draw on the sheet</span>
+          <div class="tools" role="group" aria-label="Drawing tools">
+            <button class="tool" data-tool="pencil" aria-pressed="true">Pencil</button>
+            <button class="tool" data-tool="charcoal" aria-pressed="false">Charcoal</button>
+            <button class="tool" data-tool="eraser" aria-pressed="false">Eraser</button>
+            <button class="tool" id="undo" type="button">Undo</button>
+            <button class="tool" id="clear" type="button">New sheet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Recent</span><span class="note">2025–2026</span></div>
+      <div>
+        <div class="head-row"><h2>Recent exhibitions and projects.</h2><a class="more" href="#work">All work →</a></div>
+        <ul class="news">
+          <li><a href="#work"><time datetime="2026-09">Sep 2026</time><h3>Hani Fest 2026<span>Participating artist, Hani i 2 Robertëve</span></h3><span class="arrow">→</span></a></li>
+          <li><a href="#work"><time datetime="2026-09">Sep 2026</time><h3>WHI TE SPA CE<span>International invitational poster exhibition</span></h3><span class="arrow">→</span></a></li>
+          <li><a href="#work"><time datetime="2026-08">Aug 2026</time><h3>Featured artist, Artista de Colores<span>Cover of issue no. 64</span></h3><span class="arrow">→</span></a></li>
+          <li><a href="#work"><time datetime="2026-06">Jun 2026</time><h3>Multimedia, solo exhibition<span>Raum für Kunst, Paderborn, Germany</span></h3><span class="arrow">→</span></a></li>
+          <li><a href="#work"><time datetime="2025-10">Oct 2025</time><h3>Soil of Lule<span>Solo exhibition, Harvard University &amp; MIT, Boston</span></h3><span class="arrow">→</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">About</span><span class="note">the artist</span></div>
+      <div class="portrait-wrap">
+        <figure>
+          <button class="photo-btn" type="button" data-lb="portrait"><img class="photo" src="img/portrait.jpg" alt="Black and white portrait of Luljeta Rama Muçaj laughing" width="1092" height="1094" loading="lazy"></button>
+        </figure>
+        <div>
+          <p>The daughter of the painter and professor Kadrush Rama, Luljeta grew up surrounded by art. Her work combines graphic design with painting, typography, fragments and nature. She often works in the rain and lets the weather become part of the piece.</p>
+          <p>Since 2009 she has taught visual arts at “Ismail Qemali” school in Prishtina. Since 2023 she has also lectured in Visual Communication at the University of Prishtina.</p>
+          <a class="more" href="#about">Read more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<div data-view="about" hidden>
+  <div class="pagehead">
+    <div class="wrap">
+      <div class="margin"><span class="label">About</span><span class="note">who she is</span></div>
+      <div>
+        <h1>Artist, designer, teacher and researcher.</h1>
+        <p>Luljeta Rama Muçaj is a visual artist, graphic designer and lecturer from Prishtina, with more than twenty years in art education and contemporary practice.</p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Story</span></div>
+      <div class="portrait-wrap">
+        <figure>
+          <button class="photo-btn" type="button" data-lb="portrait"><img class="photo" src="img/portrait.jpg" alt="Black and white portrait of Luljeta Rama Muçaj laughing" width="1092" height="1094" loading="lazy"></button>
+          <span class="label">Portrait</span>
+        </figure>
+        <div>
+          <p>Luljeta grew up in Prishtina, the second of four children in a family of two professors. Her father, Kadrush Rama, is a painter known in Kosovo and abroad, and his influence shaped the education and creativity of all his children.</p>
+          <p>In 1996 she began studying Graphic Design at the Academy of Arts, University of Prishtina, and graduated in 2003. From 1999 to 2004 she lived in the United States. In New York she assisted with visual arts teaching at a private school and worked in two graphic design studios and print shops.</p>
+          <p>Back in Prishtina she taught art at the International School of Pristina. She completed a Master's in Graphic Design at the University of Prishtina in 2008. Since 2025 she has been a PhD candidate in History of Art and Archaeology at Ss. Cyril and Methodius University (UKIM) in Skopje, mentored by Prof. Dr. Antonio Jakimoski.</p>
+          <blockquote style="margin-top: 32px">
+            “Art is the voice of the soul, speaking in colors beyond words.”
+            <cite class="label">Luljeta Rama Muçaj</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Practice</span><span class="note">often in the rain</span></div>
+      <div>
+        <h2>She combines graphic design with painting, type and nature.</h2>
+        <ul class="areas">
+          <li><h3>Painting</h3><p>Abstract and mixed-media painting, with techniques and textures inspired by natural phenomena. She often works outdoors in the rain.</p></li>
+          <li><h3>Graphic design</h3><p>Conceptual graphic design, typography and posters.</p></li>
+          <li><h3>Photography &amp; objects</h3><p>Photography and mixed-media objects built from fragments.</p></li>
+        </ul>
+        <p style="margin-top: 32px; color: var(--graphite); max-width: 40em">Recurring themes: identity, memory, voice and silence, soil and roots, dialogue, and structures of mediation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Education</span></div>
+      <dl class="cv">
+        <dt>2025–now</dt><dd>PhD candidate, History of Art and Archaeology<span>Faculty of Philosophy, Ss. Cyril and Methodius University (UKIM), Skopje. Mentor: Prof. Dr. Antonio Jakimoski</span></dd>
+        <dt>2006–08</dt><dd>Master in Graphic Design<span>Faculty of Arts, University of Prishtina “Hasan Prishtina”</span></dd>
+        <dt>1996–2003</dt><dd>Bachelor in Graphic Design / Graphic Arts<span>Faculty of Arts, University of Prishtina. Recognised as equivalent to a US bachelor's degree by World Education Services, New York</span></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Honours</span></div>
+      <div class="two">
+        <dl class="cv">
+          <dt>2025</dt><dd>Chair of the jury<span>Exhibition in Shkodër, 28 November 2025</span></dd>
+          <dt>2024</dt><dd>Panellist<span>Scientific symposium “Integrating art, drama and theatre in education”, 5 June 2024</span></dd>
+          <dt>2023</dt><dd>Distinguished Teacher of the Year<span>Municipal Directorate of Education, Prishtina</span></dd>
+          <dt>2023</dt><dd>Ambassador of Kosovo, Colours of Peace<span>Stazzema, Italy, promoting the art of Kosovo's students internationally</span></dd>
+          <dt>Ongoing</dt><dd>Collaborator, Gallery MC, New York<span>Promoting Albanian artists</span></dd>
+        </dl>
+        <div>
+          <span class="label">Languages</span>
+          <p style="margin-top: 8px">Albanian (native), English, Serbo-Croatian</p>
+          <a class="more" href="#contact">Get in touch →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ WORK ============ -->
+<div data-view="work" hidden>
+  <div class="pagehead">
+    <div class="wrap">
+      <div class="margin"><span class="label">Work</span><span class="note">since 2000</span></div>
+      <div>
+        <h1>Exhibitions, festivals and features.</h1>
+        <p>Selected recent projects, followed by her solo and group exhibitions. Click an image to see it larger.</p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Projects</span><span class="note">2025–2026</span></div>
+      <div>
+        <article class="project">
+          <div class="project-media">
+            <button class="photo-btn" type="button" data-lb="magazine"><img class="photo" src="img/magazine.jpg" alt="Cover of Artista de Colores magazine, August 2026, featuring Luljeta Muçaj beside one of her textured paintings" width="976" height="1232" loading="lazy"></button>
+            <span class="label">Cover, issue no. 64</span>
+          </div>
+          <div class="project-text">
+            <span class="label">August 2026 · Feature</span>
+            <h3>Featured artist, Artista de Colores</h3>
+            <p>The international online magazine <em>Artista de Colores</em> put Luljeta on the cover of its August 2026 issue as featured artist. The cover places her portrait beside one of her paintings, a dense, sculpted surface of layered paint.</p>
+            <dl class="facts">
+              <dt>Publication</dt><dd>Artista de Colores, international online magazine</dd>
+              <dt>Issue</dt><dd>No. 64, August 2026</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-media">
+            <button class="photo-btn" type="button" data-lb="hanifest"><img class="photo" src="img/hanifest.jpg" alt="Hani Fest 2026 poster listing the participating artists" width="720" height="960" loading="lazy"></button>
+            <span class="label">Festival poster</span>
+          </div>
+          <div class="project-text">
+            <span class="label">September 2026 · Festival</span>
+            <h3>Hani Fest 2026</h3>
+            <p>Luljeta was one of the participating artists at Hani Fest, a week-long art festival held at Hani i 2 Robertëve.</p>
+            <dl class="facts">
+              <dt>Dates</dt><dd>21–26 September 2026</dd>
+              <dt>Venue</dt><dd>Hani i 2 Robertëve</dd>
+              <dt>Role</dt><dd>Participating artist</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-media">
+            <div class="ws" aria-hidden="true">
+              <div class="ws-word"><span>WHI</span><span>TE</span><span>SPA</span><span>CE</span></div>
+              <span class="label">Int'l poster exhibition 2026</span>
+              <span class="ws-corner"></span>
+            </div>
+            <span class="label">Title set in type</span>
+          </div>
+          <div class="project-text">
+            <span class="label">September 2026 · Exhibition</span>
+            <h3>WHI TE SPA CE</h3>
+            <p>An international invitational poster exhibition from Worldwide Graphic Designers about white space in visual communication. Fifty designers and educators from around the world were each invited to make a poster about it. Luljeta was one of them.</p>
+            <dl class="facts">
+              <dt>Organiser</dt><dd>Worldwide Graphic Designers (WGD)</dd>
+              <dt>Exhibition</dt><dd>14 September 2026</dd>
+              <dt>Format</dt><dd>Poster, 70 × 100 cm</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-media">
+            <button class="photo-btn" type="button" data-lb="gallery"><img class="photo" src="img/gallery.jpg" alt="Luljeta in a white gallery with stone arches and framed paintings on the walls" width="786" height="1398" loading="lazy"></button>
+            <span class="label">In the gallery</span>
+          </div>
+          <div class="project-text">
+            <span class="label">2025–now · Research</span>
+            <h3>Doctoral studies in History of Art</h3>
+            <p>Luljeta is a PhD candidate in History of Art and Archaeology at the Faculty of Philosophy, Ss. Cyril and Methodius University (UKIM) in Skopje. Her mentor is Prof. Dr. Antonio Jakimoski.</p>
+            <dl class="facts">
+              <dt>University</dt><dd>Ss. Cyril and Methodius (UKIM), Skopje</dd>
+              <dt>Programme</dt><dd>History of Art and Archaeology</dd>
+              <dt>Mentor</dt><dd>Prof. Dr. Antonio Jakimoski</dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Solo exhibitions</span><span class="note">selected</span></div>
+      <dl class="cv">
+        <dt>2026</dt><dd>Multimedia<span>Raum für Kunst, Paderborn, Germany, 8 June 2026. Curator: Assoc. Prof. Rrezeart Galica</span></dd>
+        <dt>2026</dt><dd>Zhurma e kuptimit (The Noise of Meaning)<span>National Gallery, Çifte Hamam, Skopje. Curator: Narona Luma Veseli</span></dd>
+        <dt>2026</dt><dd>Between Voice and Silence<span>Chrostiras, Thessaloniki. Curator: Fatmir Juka</span></dd>
+        <dt>2025</dt><dd>Soil of Lule<span>Harvard University &amp; MIT, Boston, 25 October 2025. Curator: Stefano Romano</span></dd>
+        <dt>2025</dt><dd>Face on the Surface<span>Agora Argiri Gallery, Patras, Greece, 19 November 2025. Curator: Fatmir Juka</span></dd>
+        <dt>2025</dt><dd>Embassy of Kosovo, Athens</dd>
+        <dt>2024</dt><dd>Gallery MC, Manhattan, New York<span>October 2024</span></dd>
+        <dt>2024</dt><dd>Balsha Tower Gallery, Ulcinj</dd>
+        <dt>2023</dt><dd>National Museum of Kosovo, Prishtina</dd>
+        <dt>2023</dt><dd>Dritëhija artistike (Artistic Chiaroscuro)<span>Gallery of Arts, Tetovo</span></dd>
+        <dt>2023</dt><dd>Gallery of Arts, Shkodër</dd>
+        <dt>2010</dt><dd>Ulcinj Castle; European Commission Building, Prishtina</dd>
+        <dt>2008</dt><dd>Ekspoart.40 Gallery, Prishtina</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Group exhibitions</span><span class="note">&amp; projects</span></div>
+      <dl class="cv">
+        <dt>2026</dt><dd>Nile Creators<span>And the UAE Family Festival “One family, many stories”</span></dd>
+        <dt>2025</dt><dd>International Poster Festival<span>Group exhibition, 16 December 2025</span></dd>
+        <dt>2025</dt><dd>EXPO METRO, Barcelona<span>Also “All the children cry in the same language”, Cappadocia; Gjilan; Ferizaj</span></dd>
+        <dt>2024</dt><dd>Embassy of Kosovo, Bern</dd>
+        <dt>2023</dt><dd>Albanian Culture Week, Prizren<span>Also Expo Autumn / Summer, Prishtina; Prishtina Art International Residency; Artists for Artists, North Macedonia; Women for Women, Peja; Flaka e Janarit, Gjilan</span></dd>
+        <dt>2019</dt><dd>Art Unity<span>Archiade Atelier, Dubai Design District</span></dd>
+        <dt>2015</dt><dd>November Salon, Prishtina<span>Also 2008 and 2007</span></dd>
+        <dt>2012</dt><dd>Inauguration of Rita Ora as Kosovo's ambassador<span>Embassy of Kosovo, London</span></dd>
+        <dt>2000</dt><dd>View Point, New York</dd>
+      </dl>
+    </div>
+  </section>
+</div>
+
+<!-- ============ TEACHING ============ -->
+<div data-view="teaching" hidden>
+  <div class="pagehead">
+    <div class="wrap">
+      <div class="margin"><span class="label">Teaching</span><span class="note">20+ years</span></div>
+      <div>
+        <h1>Twenty years of teaching children and students to make art.</h1>
+        <p>Luljeta has taught art since 2004, from preschool classes to university students. She teaches visual arts at “Ismail Qemali” school and lectures at the Faculty of Arts, University of Prishtina.</p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Now</span></div>
+      <div>
+        <ul class="subjects">
+          <li class="subject"><h3>Visual Communication<span class="label" style="display:block; margin-top: 4px">University of Prishtina · since Oct 2023</span></h3><p>External lecturer for students in years II–IV of the Department of Dramaturgy, Faculty of Arts.</p></li>
+          <li class="subject"><h3>Basics of Design<span class="label" style="display:block; margin-top: 4px">University of Prishtina · since Oct 2023</span></h3><p>Design fundamentals for students of the Department of Dramaturgy.</p></li>
+          <li class="subject"><h3>Visual arts, grades 6–9<span class="label" style="display:block; margin-top: 4px">“Ismail Qemali” school · since Jan 2009</span></h3><p>Theory, practice and assessment, lesson planning and working with parents.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Approach</span><span class="note">in her words</span></div>
+      <div>
+        <h2>Nurture curiosity and encourage artistic expression.</h2>
+        <ul class="areas">
+          <li><h3>Open horizons</h3><p>Show students what art can be, so they find creative paths they hadn't imagined.</p></li>
+          <li><h3>Build focus</h3><p>Use new methods, materials and techniques, drawn from international research on children's art education.</p></li>
+          <li><h3>Courage</h3><p>Help students look at life with courage and creativity, and enjoy what they achieve.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Students' work</span><span class="note">abroad</span></div>
+      <div class="two">
+        <div>
+          <p>Through the international foundation Colours of Peace, her students' work has been exhibited in Rome, Dubai, Barcelona and Ecuador. In 2023 the foundation appointed her its Ambassador of Kosovo.</p>
+          <p>In 2023 she twinned her school with the Liceo Artistico in Valenza, Italy. She also organises school exhibitions and has made local and national TV programmes, including on RTK, about talented students and their work.</p>
+        </div>
+        <blockquote>
+          Distinguished Teacher of the Year
+          <cite class="label">Municipality of Prishtina, 2023</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Teaching CV</span></div>
+      <dl class="cv">
+        <dt>2023–now</dt><dd>Lecturer, Department of Dramaturgy<span>Faculty of Arts, University of Prishtina “Hasan Prishtina”. Visual Communication and Basics of Design</span></dd>
+        <dt>2009–now</dt><dd>Art teacher<span>“Ismail Qemali” primary and lower secondary school, Prishtina. Grades 6–9</span></dd>
+        <dt>2006–19</dt><dd>Art teacher<span>ILG International Learning Group, Prishtina. Preschool to grade 7</span></dd>
+        <dt>2004–06</dt><dd>Art teacher<span>International School of Pristina. Grades 1–9, catalogues and exhibition visits</span></dd>
+        <dt>1999–2004</dt><dd>Art education assistant, New York<span>Private school, through the NGO IRC</span></dd>
+      </dl>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<div data-view="contact" hidden>
+  <div class="pagehead">
+    <div class="wrap">
+      <div class="margin"><span class="label">Contact</span><span class="note">say hello</span></div>
+      <div>
+        <h1>Exhibitions, commissions, teaching.</h1>
+        <p>Get in touch about exhibitions, poster and design commissions, workshops or lectures.</p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Details</span></div>
+      <div class="contact-row">
+        <div>
+          <span class="label">Email</span>
+          <span class="mail" id="mail">luljeta@example.com</span>
+          <button class="btn" id="copy" type="button">Copy address</button>
+        </div>
+        <div>
+          <span class="label">Based in</span>
+          <span>Prishtina, Kosovo</span>
+          <span class="label" style="margin-top: 10px">Languages</span>
+          <span>Albanian, English, Serbo-Croatian</span>
+        </div>
+        <div>
+          <span class="label">Facebook</span>
+          <a class="more" href="https://www.facebook.com/lule.muqaj.7" target="_blank" rel="noopener">Luljeta Rama Muçaj ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Enquiry</span><span class="note">write it here</span></div>
+      <div>
+        <h2>Tell her what you have in mind.</h2>
+        <form id="enquiry" novalidate>
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="f-email">Your email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field full"><label for="f-topic">About</label>
+            <select id="f-topic" name="topic">
+              <option>An exhibition</option>
+              <option>A poster or design commission</option>
+              <option>A painting</option>
+              <option>A workshop or lecture</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field full"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="A few lines about the project, dates and place."></textarea></div>
+          <div class="form-foot">
+            <button class="btn solid" type="submit">Prepare my message</button>
+            <span class="form-status" id="form-status" role="status"></span>
+          </div>
+          <pre class="draft" id="draft" hidden></pre>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <span class="sig">Luljeta Rama Muçaj</span>
+      <div class="foot-nav">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#work">Work</a><a href="#teaching">Teaching</a><a href="#contact">Contact</a>
+      </div>
+    </div>
+    <span class="note">Prishtina</span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image">
+  <img id="lb-img" alt="">
+  <div class="lb-text">
+    <span class="label" id="lb-kicker"></span>
+    <span class="lb-title" id="lb-title"></span>
+    <div class="tools" style="margin-top: 12px">
+      <button class="tool" id="lb-prev" type="button">← Prev</button>
+      <button class="tool" id="lb-next" type="button">Next →</button>
+      <button class="tool" id="lb-close" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  // seeded random so the still life looks the same every visit
+  const rng = (seed) => () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- pages ---------- */
+  const views = [...document.querySelectorAll('[data-view]')];
+  const names = views.map(v => v.dataset.view);
+  function show(name, scroll) {
+    if (!names.includes(name)) name = 'home';
+    views.forEach(v => v.hidden = v.dataset.view !== name);
+    document.querySelectorAll('nav a').forEach(a => {
+      if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    if (scroll) window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', () => show(location.hash.slice(1), true));
+  show(location.hash.slice(1), false);
+
+  /* ---------- drawing sheet ---------- */
+  const pad = document.getElementById('pad');
+  const ctx = pad.getContext('2d');
+  const W = pad.width, H = pad.height;
+  const strokes = [];
+  let tool = 'pencil';
+  let userTouched = false, current = null, finishSample = null;
+
+  const TOOLS = {
+    pencil:   { width: 2.2, alpha: 0.85, passes: 1, spread: 0 },
+    charcoal: { width: 9,   alpha: 0.18, passes: 4, spread: 3.5 },
+    eraser:   { width: 36,  alpha: 1,    passes: 1, spread: 0, erase: true },
+  };
+
+  function drawPath(pts, t, from = 1) {
+    const s = TOOLS[t];
+    ctx.save();
+    ctx.globalCompositeOperation = s.erase ? 'destination-out' : 'source-over';
+    ctx.strokeStyle = '#0b0b0b';
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    for (let p = 0; p < s.passes; p++) {
+      const ox = (p - s.passes / 2) * s.spread * 0.6, oy = (p % 2 ? 1 : -1) * s.spread * 0.4;
+      ctx.globalAlpha = s.alpha;
+      ctx.lineWidth = s.width * (1 - p * 0.12);
+      ctx.beginPath();
+      const start = Math.max(0, from - 1);
+      ctx.moveTo(pts[start][0] + ox, pts[start][1] + oy);
+      for (let i = start + 1; i < pts.length; i++) ctx.lineTo(pts[i][0] + ox, pts[i][1] + oy);
+      if (pts.length === 1) ctx.lineTo(pts[0][0] + ox + 0.1, pts[0][1] + oy);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  function redraw() {
+    ctx.clearRect(0, 0, W, H);
+    strokes.forEach(s => drawPath(s.pts, s.tool));
+  }
+
+  function sketchEllipse(r, cx, cy, rx, ry, a0 = 0, a1 = Math.PI * 2, wob = 0.03) {
+    const pts = [], n = 60, over = 0.25 + r() * 0.2;
+    for (let i = 0; i <= n; i++) {
+      const a = a0 - over / 2 + (a1 - a0 + over) * (i / n);
+      const k = 1 + (r() - 0.5) * wob;
+      pts.push([cx + Math.cos(a) * rx * k, cy + Math.sin(a) * ry * k]);
+    }
+    return pts;
+  }
+  function sketchLine(r, x1, y1, x2, y2, j = 2) {
+    const pts = [], n = 12;
+    for (let i = 0; i <= n; i++) {
+      const t = i / n;
+      pts.push([x1 + (x2 - x1) * t + (r() - .5) * j, y1 + (y2 - y1) * t + (r() - .5) * j]);
+    }
+    return pts;
+  }
+  // a loose still life: jug, apple, pear, table edge, hatched shadows
+  function sampleStillLife() {
+    const r = rng(7), out = [];
+    const P = (pts, t = 'pencil') => out.push({ pts, tool: t });
+    P(sketchLine(r, 60, 700, 1140, 690, 3));
+    P(sketchLine(r, 90, 712, 1100, 703, 4));
+    const side = (dir) => {
+      const pts = [];
+      for (let i = 0; i <= 40; i++) {
+        const t = i / 40, y = 250 + t * 430;
+        const bulge = Math.sin(t * Math.PI * 0.95 + 0.15) * 120;
+        pts.push([520 + dir * (70 + bulge) + (r() - .5) * 2, y]);
+      }
+      return pts;
+    };
+    P(side(-1)); P(side(1));
+    P(sketchEllipse(r, 520, 250, 72, 18));
+    P(sketchEllipse(r, 520, 680, 112, 16, 0, Math.PI));
+    P([[446, 248], [418, 228], [398, 222], [410, 240], [452, 262]]);
+    P(sketchEllipse(r, 660, 380, 70, 100, -Math.PI / 2, Math.PI / 2, 0.05));
+    P(sketchEllipse(r, 652, 380, 46, 74, -Math.PI / 2, Math.PI / 2, 0.05));
+    P(sketchEllipse(r, 820, 625, 78, 70, 0, Math.PI * 2, 0.06));
+    P([[818, 560], [822, 540], [830, 522]]);
+    const pear = [];
+    for (let i = 0; i <= 70; i++) {
+      const a = (i / 70) * Math.PI * 2 + 0.3;
+      const top = Math.sin(a) < 0 ? 0.55 : 1;
+      pear.push([300 + Math.cos(a) * 62 * (Math.sin(a) < 0 ? 0.7 : 1) + (r() - .5) * 2, 600 + Math.sin(a) * 80 * top]);
+    }
+    P(pear);
+    P([[300, 556], [304, 534], [298, 520]]);
+    const hatch = (x0, x1, y0, y1, step) => {
+      for (let x = x0; x < x1; x += step) {
+        const t = (x - x0) / (x1 - x0);
+        const h = Math.sin(t * Math.PI) * (y1 - y0);
+        P(sketchLine(r, x, y0 + (y1 - y0) - h * 0.2, x + 18, y0 + (y1 - y0) - h, 1.5));
+      }
+    };
+    hatch(630, 780, 650, 690, 11);
+    hatch(895, 990, 660, 690, 10);
+    for (let y = 300; y < 640; y += 14) {
+      const t = (y - 250) / 430, edge = 520 + 70 + Math.sin(t * Math.PI * 0.95 + 0.15) * 120;
+      P(sketchLine(r, edge - 46, y + 10, edge - 6, y - 12, 1.5));
+    }
+    return out;
+  }
+
+  const sample = sampleStillLife();
+  if (reduce) { strokes.push(...sample); redraw(); }
+  else {
+    // draw the still life in, one stroke at a time
+    let si = 0, pi = 1;
+    const step = () => {
+      if (userTouched) return;
+      for (let k = 0; k < 6 && si < sample.length; k++) {
+        const s = sample[si];
+        pi = Math.min(pi + 3, s.pts.length);
+        drawPath(s.pts.slice(0, pi), s.tool, Math.max(1, pi - 3));
+        if (pi >= s.pts.length) { strokes.push(s); si++; pi = 1; }
+      }
+      if (si < sample.length) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    finishSample = () => { sample.slice(si).forEach(s => strokes.push(s)); si = sample.length; redraw(); };
+  }
+
+  const hint = document.getElementById('hint');
+  const touch = () => { if (!userTouched) { userTouched = true; if (finishSample) finishSample(); hint.style.opacity = 0; } };
+  const pos = (e) => {
+    const b = pad.getBoundingClientRect();
+    return [(e.clientX - b.left) * W / b.width, (e.clientY - b.top) * H / b.height];
+  };
+  pad.addEventListener('pointerdown', (e) => {
+    touch();
+    pad.setPointerCapture(e.pointerId);
+    current = { pts: [pos(e)], tool };
+    strokes.push(current);
+    drawPath(current.pts, tool);
+  });
+  pad.addEventListener('pointermove', (e) => {
+    if (!current) return;
+    current.pts.push(pos(e));
+    drawPath(current.pts, current.tool, current.pts.length - 1);
+  });
+  const end = () => { current = null; };
+  pad.addEventListener('pointerup', end);
+  pad.addEventListener('pointercancel', end);
+
+  document.querySelectorAll('.tool[data-tool]').forEach(b => b.addEventListener('click', () => {
+    tool = b.dataset.tool;
+    document.querySelectorAll('.tool[data-tool]').forEach(o => o.setAttribute('aria-pressed', o === b));
+  }));
+  document.getElementById('undo').addEventListener('click', () => { touch(); strokes.pop(); redraw(); });
+  document.getElementById('clear').addEventListener('click', () => { touch(); strokes.length = 0; redraw(); });
+
+  /* ---------- lightbox ---------- */
+  const IMAGES = [
+    { id: 'magazine', src: 'img/magazine.jpg', kicker: 'August 2026', title: 'Featured artist, Artista de Colores, issue no. 64' },
+    { id: 'hanifest', src: 'img/hanifest.jpg', kicker: 'September 2026', title: 'Hani Fest 2026, Hani i 2 Robertëve' },
+    { id: 'gallery', src: 'img/gallery.jpg', kicker: 'September 2026', title: 'In the gallery' },
+    { id: 'portrait', src: 'img/portrait.jpg', kicker: 'Portrait', title: 'Luljeta Rama Muçaj' },
+  ];
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  let lbIndex = 0, lastFocus = null;
+  function openLb(i) {
+    lbIndex = (i + IMAGES.length) % IMAGES.length;
+    const im = IMAGES[lbIndex];
+    lbImg.src = im.src;
+    lbImg.alt = im.title;
+    document.getElementById('lb-kicker').textContent = im.kicker;
+    document.getElementById('lb-title').textContent = im.title;
+    if (lb.hidden) lastFocus = document.activeElement;
+    lb.hidden = false;
+    document.getElementById('lb-close').focus();
+  }
+  function closeLb() { lb.hidden = true; if (lastFocus) lastFocus.focus(); }
+  document.querySelectorAll('[data-lb]').forEach(b => b.addEventListener('click', () => {
+    openLb(IMAGES.findIndex(im => im.id === b.dataset.lb));
+  }));
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  document.getElementById('lb-next').addEventListener('click', () => openLb(lbIndex + 1));
+  document.getElementById('lb-prev').addEventListener('click', () => openLb(lbIndex - 1));
+  document.addEventListener('keydown', (e) => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowRight') openLb(lbIndex + 1);
+    if (e.key === 'ArrowLeft') openLb(lbIndex - 1);
+  });
+
+  /* ---------- copy ---------- */
+  function copyText(text, btn, label, selectEl) {
+    const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = label, 1800); };
+    const fallback = () => {
+      const sel = getSelection(), range = document.createRange();
+      range.selectNodeContents(selectEl);
+      sel.removeAllRanges(); sel.addRange(range);
+      btn.textContent = 'Press ⌘C / Ctrl+C';
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  }
+  const mailEl = document.getElementById('mail');
+  const copyBtn = document.getElementById('copy');
+  copyBtn.addEventListener('click', () => copyText(mailEl.textContent, copyBtn, 'Copy address', mailEl));
+
+  /* ---------- enquiry form ---------- */
+  const form = document.getElementById('enquiry');
+  const status = document.getElementById('form-status');
+  const draft = document.getElementById('draft');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(form));
+    if (!d.name.trim() || !/^\S+@\S+\.\S+$/.test(d.email)) {
+      status.textContent = 'Add your name and a valid email so she can reply.';
+      return;
+    }
+    draft.textContent =
+`To: ${mailEl.textContent}
+Subject: Enquiry: ${d.topic}
+
+Dear Luljeta,
+
+${d.message.trim() || 'I would like to get in touch about a project.'}
+
+Kind regards,
+${d.name}
+${d.email}`;
+    draft.hidden = false;
+    status.textContent = '';
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'btn'; btn.textContent = 'Copy message';
+    btn.addEventListener('click', () => copyText(draft.textContent, btn, 'Copy message', draft));
+    const hintText = document.createElement('span');
+    hintText.textContent = `Paste it into an email to ${mailEl.textContent}.`;
+    status.append(btn, hintText);
+  });
+})();
+</script>
+</body>
+</html>
