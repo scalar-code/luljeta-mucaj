@@ -15,25 +15,17 @@ img { max-width: 100%; }
 [hidden] { display: none !important; }
 /* Layout: a sketchbook — five pages, each a spread with a narrow margin column of pencil notes beside the page. Photos are shown in greyscale so the site stays black and white. */
 :root {
-  --paper: #ffffff;
-  --ink: #0b0b0b;
-  --graphite: #5c5c5c;
-  --rule: #d9d9d9;
-  --wash: #f4f4f4;
-  --canvas-filter: none;
+  /* her choice: black background, white writing, in every theme */
+  --paper: #0b0b0b;
+  --ink: #f2f2f2;
+  --graphite: #9a9a9a;
+  --rule: #2a2a2a;
+  --wash: #151515;
+  --canvas-filter: invert(1);
   --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
   --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --hand: "Reenie Beanie", "Bradley Hand", "Segoe Print", cursive;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0b0b0b; --ink: #f2f2f2; --graphite: #9a9a9a; --rule: #2a2a2a; --wash: #151515;
-    --canvas-filter: invert(1); color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0b0b0b; --ink: #f2f2f2; --graphite: #9a9a9a; --rule: #2a2a2a; --wash: #151515;
-  --canvas-filter: invert(1); color-scheme: dark;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
