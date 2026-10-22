@@ -8,3 +8,5 @@ A single static page (`index.html`) with five sections: Home, About, Work, Teach
 - `img/`: photos (portrait, gallery, Hani Fest poster, Artista de Colores cover)
 
 Still to do: replace the placeholder email `luljeta@example.com` on the Contact page.
+website is https://scalar-code.github.io/luljeta-mucaj/
+
