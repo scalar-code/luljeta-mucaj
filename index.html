@@ -217,6 +217,10 @@ blockquote cite { display: block; margin-top: 14px; font-style: normal; }
 .vid { border-bottom: 1px solid var(--graphite); }
 .vid:hover { color: var(--ink); }
 
+a.ext { border-bottom: 1px solid var(--graphite); transition: border-color .2s; }
+a.ext:hover { border-color: var(--ink); }
+a.ext::after { content: " ↗"; font-family: var(--mono); font-size: .75em; color: var(--graphite); }
+
 /* teaching */
 .subjects { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
 .subject {
@@ -358,7 +362,7 @@ footer .foot-nav a:hover { color: var(--ink); }
           <li><a href="#work"><time datetime="2026-09">Sep 2026</time><h3>Hani Fest 2026<span>Participating artist, Hani i 2 Robertëve</span></h3><span class="arrow">→</span></a></li>
           <li><a href="#work"><time datetime="2026-09">Sep 2026</time><h3>WHI TE SPA CE<span>International invitational poster exhibition</span></h3><span class="arrow">→</span></a></li>
           <li><a href="#work"><time datetime="2026-08">Aug 2026</time><h3>Featured artist, Artista de Colores<span>Cover of issue no. 64</span></h3><span class="arrow">→</span></a></li>
-          <li><a href="#work"><time datetime="2026-06">Jun 2026</time><h3>Multimedia, solo exhibition<span>Raum für Kunst, Paderborn, Germany</span></h3><span class="arrow">→</span></a></li>
+          <li><a href="#work"><time datetime="2026-06">Jun 2026</time><h3>Origin Trace, solo exhibition<span>Raum für Kunst, Paderborn, Germany</span></h3><span class="arrow">→</span></a></li>
           <li><a href="#work"><time datetime="2026-04">Apr 2026</time><h3>The Noise of Meaning<span>Solo exhibition, National Gallery, Çifte Hamam, Skopje</span></h3><span class="arrow">→</span></a></li>
           <li><a href="#work"><time datetime="2026-04">Apr 2026</time><h3>Interview on Prizma<span>Alsat television</span></h3><span class="arrow">→</span></a></li>
           <li><a href="#work"><time datetime="2025-10">Oct 2025</time><h3>Soil of Lule<span>Solo exhibition, Harvard University &amp; MIT, Boston</span></h3><span class="arrow">→</span></a></li>
@@ -745,7 +749,7 @@ footer .foot-nav a:hover { color: var(--ink); }
           </div>
           <div class="project-text">
             <span class="label">August 2026 · Feature</span>
-            <h3>Featured artist, Artista de Colores</h3>
+            <h3><a class="ext" href="https://www.facebook.com/marlene.galit/posts/featured-artist-luljeta-mu%C3%A7ajartista-de-colores-international-online-magazine-au/27951124057850185/" target="_blank" rel="noopener">Featured artist, Artista de Colores</a></h3>
             <p>The international online magazine <em>Artista de Colores</em> put Luljeta on the cover of its August 2026 issue as featured artist. The cover places her portrait beside one of her paintings, a dense, sculpted surface of layered paint.</p>
             <dl class="facts">
               <dt>Publication</dt><dd>Artista de Colores, international online magazine</dd>
@@ -761,7 +765,7 @@ footer .foot-nav a:hover { color: var(--ink); }
           </div>
           <div class="project-text">
             <span class="label">September 2026 · Festival</span>
-            <h3>Hani Fest 2026</h3>
+            <h3><a class="ext" href="https://www.facebook.com/Hanidyroberteve" target="_blank" rel="noopener">Hani Fest 2026</a></h3>
             <p>Luljeta was one of the participating artists at Hani Fest, a week-long art festival held at Hani i 2 Robertëve.</p>
             <dl class="facts">
               <dt>Dates</dt><dd>21–26 September 2026</dd>
@@ -782,7 +786,7 @@ footer .foot-nav a:hover { color: var(--ink); }
           </div>
           <div class="project-text">
             <span class="label">September 2026 · Exhibition</span>
-            <h3>WHI TE SPA CE</h3>
+            <h3><a class="ext" href="https://www.instagram.com/p/DeXPFsXiKzm/" target="_blank" rel="noopener">WHI TE SPA CE</a></h3>
             <p>An international invitational poster exhibition from Worldwide Graphic Designers about white space in visual communication. Fifty designers and educators from around the world were each invited to make a poster about it. Luljeta was one of them.</p>
             <dl class="facts">
               <dt>Organiser</dt><dd>Worldwide Graphic Designers (WGD)</dd>
@@ -802,7 +806,7 @@ footer .foot-nav a:hover { color: var(--ink); }
             <h3>Doctoral studies in History of Art</h3>
             <p>Luljeta is a PhD candidate in History of Art and Archaeology at the Faculty of Philosophy, Ss. Cyril and Methodius University (UKIM) in Skopje. Her mentor is Prof. Dr. Antonio Jakimoski.</p>
             <dl class="facts">
-              <dt>University</dt><dd>Ss. Cyril and Methodius (UKIM), Skopje</dd>
+              <dt>University</dt><dd><a class="ext" href="https://www.ukim.edu.mk/en/" target="_blank" rel="noopener">Ss. Cyril and Methodius (UKIM), Skopje</a></dd>
               <dt>Programme</dt><dd>History of Art and Archaeology</dd>
               <dt>Mentor</dt><dd>Prof. Dr. Antonio Jakimoski</dd>
             </dl>
@@ -856,9 +860,22 @@ footer .foot-nav a:hover { color: var(--ink); }
           </figure>
           <figure class="wide">
             <button class="photo-btn" type="button" data-lb="interview"><img class="photo" src="img/interview.jpg" alt="Luljeta being interviewed in a TV studio, with two of her paintings on the wall behind" width="1179" height="588" loading="lazy"></button>
-            <figcaption><span class="label">17 April 2026 · Alsat</span>Interview on <em>Prizma</em>, with two of her paintings on the studio wall</figcaption>
+            <figcaption><span class="label">17 April 2026 · Alsat</span><a class="ext" href="https://www.facebook.com/alsatnmk/videos/prizma-shkupi-na-ka-l%C3%ABn-ndjenj%C3%AB-emocionale-nga-koha-e-luft%C3%ABs-artistja-nga-kosova/4631506577135842/" target="_blank" rel="noopener">Interview on <em>Prizma</em></a>, with two of her paintings on the studio wall</figcaption>
           </figure>
         </div>
+        <h2 style="margin-top: 72px">In the press</h2>
+        <dl class="cv">
+          <dt>2026</dt><dd><a class="ext" href="https://portalb.mk/luljeta-rama-mucaj-ekspozon-zhurma-e-kuptimit-ne-galerine-nacionale-ne-shkup/" target="_blank" rel="noopener">Luljeta Rama Muçaj ekspozon “Zhurma e kuptimit”</a><span>Portalb.mk</span></dd>
+          <dt>2026</dt><dd><a class="ext" href="https://www.facebook.com/kultpluscom/posts/metofora-e-zhurm%C3%ABs-s%C3%AB-kuptimit-n%C3%AB-punimet-e-luljeta-mu%C3%A7aj-rama-i-referohet-l%C3%ABviz/1420127456809212/" target="_blank" rel="noopener">Metafora e zhurmës së kuptimit në punimet e Luljeta Muçaj</a><span>KultPlus, on Facebook</span></dd>
+          <dt>2026</dt><dd><a class="ext" href="https://observerkult.com/arlind-farizi-zhurma-e-kuptimit/" target="_blank" rel="noopener">Arlind Farizi: Zhurma e kuptimit</a><span>ObserverKult</span></dd>
+          <dt>2026</dt><dd><a class="ext" href="https://www.facebook.com/alsatnmk/videos/prizma-shkupi-na-ka-l%C3%ABn-ndjenj%C3%AB-emocionale-nga-koha-e-luft%C3%ABs-artistja-nga-kosova/4631506577135842/" target="_blank" rel="noopener">Interview on Prizma</a><span>Alsat television</span></dd>
+          <dt>2026</dt><dd><a class="ext" href="https://cityportal.gr/between-voice-and-silence-atomiki-ekthesi-tis-luljeta-rama-mucaj-ston-chrostira-thessalonikis/" target="_blank" rel="noopener">Between Voice and Silence at Chrostiras</a><span>Cityportal.gr</span></dd>
+          <dt>2025</dt><dd><a class="ext" href="https://epiqendra.com/piktorja-e-kontinenteve-ne-harvard-luljeta-rama-mucaj/" target="_blank" rel="noopener">“Piktorja e kontinenteve” në Harvard</a><span>Epiqendra</span></dd>
+          <dt>2025</dt><dd><a class="ext" href="https://gazetadielli.com/piktorja-nga-kosova-luljeta-rama-mucaj-vizitoi-vatren/" target="_blank" rel="noopener">Piktorja nga Kosova Luljeta Rama Muçaj vizitoi Vatrën</a><span>Gazeta Dielli</span></dd>
+          <dt>2023</dt><dd><a class="ext" href="https://www.dashart.al/2023/12/23/dheu-toka-pas-shiut/" target="_blank" rel="noopener">Dheu (toka) pas shiut!</a><span>Dashart, text by Fatmir Juka</span></dd>
+          <dt>—</dt><dd><a class="ext" href="https://observerkult.com/luljeta-rama-mucaj-ngjyrat-e-erreta-ne-veprat-e-mia-me-bejne-te-ndjehem-e-cilter-dhe-e-forte/" target="_blank" rel="noopener">Luljeta Rama-Muçaj: Ngjyrat e errëta në veprat e mia…</a><span>ObserverKult, interview</span></dd>
+          <dt>—</dt><dd><a class="ext" href="https://top-channel.tv/video/luljeta-mucaj-pinjolle-e-familjes-rama-sjell-tablote-dridhje-dhe-hapur-artkand/" target="_blank" rel="noopener">Luljeta Muçaj sjell tablotë Dridhje dhe Hapur</a><span>Top Channel, video</span></dd>
+        </dl>
       </div>
     </div>
   </section>
@@ -867,17 +884,17 @@ footer .foot-nav a:hover { color: var(--ink); }
     <div class="wrap spread">
       <div class="margin"><span class="label">Solo exhibitions</span><span class="note">selected</span></div>
       <dl class="cv">
-        <dt>2026</dt><dd>Multimedia<span>Raum für Kunst, Paderborn, Germany, 8 June 2026. Curator: Assoc. Prof. Rrezeart Galica</span></dd>
-        <dt>2026</dt><dd>Zhurma e kuptimit (The Noise of Meaning)<span>Graphic design and multimedia. National Gallery of North Macedonia, Çifte Hamam, Skopje, opened 20 April 2026. Curator: Narona Luma Veseli · <a class="vid" href="https://www.kultplus.com/arti-pamor/zhurma-e-kuptimit/" target="_blank" rel="noopener">KultPlus ↗</a> · <a class="vid" href="https://observerkult.com/arlind-farizi-zhurma-e-kuptimit/" target="_blank" rel="noopener">ObserverKult ↗</a></span></dd>
-        <dt>2026</dt><dd>Between Voice and Silence<span>Chrostiras, Thessaloniki. Curator: Fatmir Juka</span></dd>
-        <dt>2025</dt><dd>Soil of Lule<span>Harvard University &amp; MIT, Boston, 25 October 2025. Curator: Stefano Romano</span></dd>
-        <dt>2025</dt><dd>Face on the Surface<span>Agora Argiri Gallery, Patras, Greece, 19 November 2025. Curator: Fatmir Juka</span></dd>
+        <dt>2026</dt><dd><a class="ext" href="https://raumfuerkunst.de/2026/06/07/origin-trace/" target="_blank" rel="noopener">Origin Trace (Gjurmë Origjine)</a><span>Graphic design and multimedia. Raum für Kunst, Paderborn, Germany, 8 June 2026. Curator: Assoc. Prof. Rrezeart Galica</span></dd>
+        <dt>2026</dt><dd><a class="ext" href="https://portalb.mk/luljeta-rama-mucaj-ekspozon-zhurma-e-kuptimit-ne-galerine-nacionale-ne-shkup/" target="_blank" rel="noopener">Zhurma e kuptimit (The Noise of Meaning)</a><span>Graphic design and multimedia. National Gallery of North Macedonia, Çifte Hamam, Skopje, opened 20 April 2026. Curator: Narona Luma Veseli · <a class="vid" href="https://www.facebook.com/kultpluscom/posts/metofora-e-zhurm%C3%ABs-s%C3%AB-kuptimit-n%C3%AB-punimet-e-luljeta-mu%C3%A7aj-rama-i-referohet-l%C3%ABviz/1420127456809212/" target="_blank" rel="noopener">KultPlus ↗</a> · <a class="vid" href="https://observerkult.com/arlind-farizi-zhurma-e-kuptimit/" target="_blank" rel="noopener">ObserverKult ↗</a></span></dd>
+        <dt>2026</dt><dd><a class="ext" href="https://cityportal.gr/between-voice-and-silence-atomiki-ekthesi-tis-luljeta-rama-mucaj-ston-chrostira-thessalonikis/" target="_blank" rel="noopener">Between Voice and Silence</a><span>Chrostiras, Thessaloniki, 8 May 2026. Curator: Fatmir Juka</span></dd>
+        <dt>2025</dt><dd><a class="ext" href="https://epiqendra.com/piktorja-e-kontinenteve-ne-harvard-luljeta-rama-mucaj/" target="_blank" rel="noopener">Soil of Lule (Toka e Lules)</a><span>Harvard University &amp; MIT, Boston, 25 October 2025. Curator: Stefano Romano</span></dd>
+        <dt>2025</dt><dd><a class="ext" href="https://epiqendra.com/ekspozita-personale-face-on-the-surface-luljeta-rama-mucaj/" target="_blank" rel="noopener">Face on the Surface</a><span>Agora Argiri Gallery, Patras, Greece, 19 November 2025. Curator: Fatmir Juka</span></dd>
         <dt>2025</dt><dd>Embassy of Kosovo, Athens</dd>
-        <dt>2024</dt><dd>Gallery MC, Manhattan, New York<span>October 2024</span></dd>
+        <dt>2024</dt><dd><a class="ext" href="http://www.gallerymc.org/h/luleta-rama-much/" target="_blank" rel="noopener">Gallery MC, Manhattan, New York</a><span>October 2024</span></dd>
         <dt>2024</dt><dd>Përplasja e krijimit (The Clash of Creation)<span>Balsha Tower, Ulcinj, Montenegro, 30 August 2024</span></dd>
-        <dt>2023</dt><dd>Dheu pas shiut… (Soil After Rain)<span>National Museum of Kosovo, Prishtina. Curator: Fatmir Juka · <a class="vid" href="https://www.youtube.com/watch?v=TuWo-aMWQVI" target="_blank" rel="noopener">Watch the video ↗</a></span></dd>
-        <dt>2023</dt><dd>Dritëhija artistike (Artistic Light and Shadow)<span>Gallery of Arts, Tetovo, 30 November – 5 December 2023. Curator: Nora Halimi · <a class="vid" href="https://www.youtube.com/watch?v=KLye51WK4Gg" target="_blank" rel="noopener">Watch the video ↗</a></span></dd>
-        <dt>2023</dt><dd>Në hapësirat e kompozicionit abstrakt (In the Spaces of Abstract Composition)<span>Gallery of Arts, Shkodër, 15–25 September 2023. Curator: Musa Prelvukaj · <a class="vid" href="https://www.youtube.com/watch?v=bAYdPx2x8HM" target="_blank" rel="noopener">Watch the video ↗</a></span></dd>
+        <dt>2023</dt><dd><a class="ext" href="https://www.dashart.al/2023/12/23/dheu-toka-pas-shiut/" target="_blank" rel="noopener">Dheu pas shiut… (Soil After Rain)</a><span>National Museum of Kosovo, Prishtina. Curator: Fatmir Juka · <a class="vid" href="https://www.youtube.com/watch?v=TuWo-aMWQVI" target="_blank" rel="noopener">Watch the video ↗</a></span></dd>
+        <dt>2023</dt><dd><a class="ext" href="https://portalb.mk/luljeta-rama-nga-kosova-sonte-do-te-ekspozoje-per-here-te-pare-ne-galerine-e-arteve-ne-tetove/" target="_blank" rel="noopener">Dritëhija artistike (Artistic Light and Shadow)</a><span>Gallery of Arts, Tetovo, 30 November – 5 December 2023. Curator: Nora Halimi · <a class="vid" href="https://www.youtube.com/watch?v=KLye51WK4Gg" target="_blank" rel="noopener">Watch the video ↗</a></span></dd>
+        <dt>2023</dt><dd><a class="ext" href="https://www.instagram.com/reel/CxQ_PqOsxqG/" target="_blank" rel="noopener">Në hapësirat e kompozicionit abstrakt (In the Spaces of Abstract Composition)</a><span>Gallery of Arts, Shkodër, 15–25 September 2023. Curator: Musa Prelvukaj · <a class="vid" href="https://www.youtube.com/watch?v=bAYdPx2x8HM" target="_blank" rel="noopener">Watch the video ↗</a></span></dd>
         <dt>2010</dt><dd>Ulcinj Castle; European Commission Building, Prishtina</dd>
         <dt>2008</dt><dd>Ekspoart.40 Gallery, Prishtina</dd>
       </dl>
@@ -888,7 +905,7 @@ footer .foot-nav a:hover { color: var(--ink); }
     <div class="wrap spread">
       <div class="margin"><span class="label">Group exhibitions</span><span class="note">&amp; projects</span></div>
       <dl class="cv">
-        <dt>2026</dt><dd>Art Quake 17<span>Niğde Municipal Art Gallery, Turkey, 11–19 April 2026. Curator: Safa Büte</span></dd>
+        <dt>2026</dt><dd><a class="ext" href="https://www.instagram.com/p/DVaygE4jC5T/" target="_blank" rel="noopener">Art Quake 17</a><span>Niğde Municipal Art Gallery, Turkey, 11–19 April 2026. Curator: Safa Büte</span></dd>
         <dt>2026</dt><dd>No War Art Exhibition 2026<span>International online exhibition, certificate of participation</span></dd>
         <dt>2026</dt><dd>Nile Creators<span>And the UAE Family Festival “One family, many stories”</span></dd>
         <dt>2025</dt><dd>International Poster Festival<span>Group exhibition, 16 December 2025</span></dd>
@@ -953,7 +970,7 @@ footer .foot-nav a:hover { color: var(--ink); }
       <div class="margin"><span class="label">Students' work</span><span class="note">abroad</span></div>
       <div class="two">
         <div>
-          <p>Through the international foundation Colours of Peace, her students' work has been shown in Dubai (2019), Ecuador (2020–2022), Rome (2021–2022) and at a museum in Barcelona (2022). In 2020 one of her students placed third among representatives of 145 countries in Ecuador. In 2023 the foundation appointed her its Ambassador of Kosovo.</p>
+          <p>Through the international foundation <a class="ext" href="https://www.colorsforpeace.org/post/childrens-peace-drawings-kosovo" target="_blank" rel="noopener">Colours of Peace</a>, her students' work has been shown in Dubai (2019), Ecuador (2020–2022), Rome (2021–2022) and at a museum in Barcelona (2022). In 2020 one of her students placed third among representatives of 145 countries in Ecuador. In 2023 the foundation appointed her its Ambassador of Kosovo.</p>
           <p>In 2023 she twinned her school with the Liceo Artistico in Valenza, Italy. She also organises school exhibitions and has made local and national TV programmes, including on RTK, about talented students and their work.</p>
         </div>
         <blockquote>
@@ -1006,8 +1023,9 @@ footer .foot-nav a:hover { color: var(--ink); }
           <span>Albanian, English, Serbo-Croatian</span>
         </div>
         <div>
-          <span class="label">Facebook</span>
-          <a class="more" href="https://www.facebook.com/lule.muqaj.7" target="_blank" rel="noopener">Luljeta Rama Muçaj ↗</a>
+          <span class="label">Online</span>
+          <a class="more" href="https://www.facebook.com/lule.muqaj.7" target="_blank" rel="noopener">Facebook ↗</a>
+          <a class="more" href="https://www.linkedin.com/in/luljeta-rama-mucaj-ba091028" target="_blank" rel="noopener">LinkedIn ↗</a>
         </div>
       </div>
     </div>
