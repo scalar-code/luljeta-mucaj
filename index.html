@@ -105,6 +105,15 @@ nav a[aria-current="page"]::after {
 }
 .pagehead p { color: var(--graphite); max-width: 36em; margin: 0; }
 
+.head-right { display: flex; align-items: baseline; gap: 28px; flex-wrap: wrap; }
+.lang { display: inline-flex; align-items: baseline; gap: 6px; font-family: var(--mono); font-size: 12px; color: var(--graphite); }
+.lang button {
+  font: inherit; color: var(--graphite); background: none; border: 1px solid transparent;
+  padding: 3px 7px; cursor: pointer; letter-spacing: .06em; transition: color .2s, border-color .2s;
+}
+.lang button:hover { color: var(--ink); }
+.lang button[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
+
 /* hero */
 .hero .wrap {
   display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
@@ -320,13 +329,19 @@ footer .foot-nav a:hover { color: var(--ink); }
 <header>
   <div class="wrap">
     <a class="sig" href="#home">Luljeta Rama Muçaj</a>
-    <nav aria-label="Pages">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="head-right">
+      <nav aria-label="Pages">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" lang="en" aria-pressed="true" title="English">EN</button>
+        <button type="button" data-lang="sq" lang="sq" aria-pressed="false" title="Shqip">SQ</button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -1039,7 +1054,7 @@ footer .foot-nav a:hover { color: var(--ink); }
         <form id="enquiry" novalidate>
           <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
           <div class="field"><label for="f-email">Your email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-          <div class="field full"><label for="f-topic">About</label>
+          <div class="field full"><label for="f-topic">Topic</label>
             <select id="f-topic" name="topic">
               <option>An exhibition</option>
               <option>A poster or design commission</option>
@@ -1089,6 +1104,389 @@ footer .foot-nav a:hover { color: var(--ink); }
 
 <script>
 (() => {
+  /* ---------- language: English / Shqip ---------- */
+  const SQ = {
+"Home": "Kreu",
+"About": "Rreth saj",
+"Work": "Vepra",
+"Teaching": "Mësimdhënia",
+"Contact": "Kontakti",
+"Pages": "Faqet",
+"Language": "Gjuha",
+"Visual artist · Graphic designer · Lecturer": "Artiste vizuale · Dizajnere grafike · Ligjëruese",
+"“Art is the voice of the soul, speaking in colors beyond words.”": "“Arti është zëri i shpirtit, që flet me ngjyra përtej fjalëve.”",
+"Visual artist and graphic designer from Prishtina, with more than twenty years of teaching art to children and students.": "Artiste vizuale dhe dizajnere grafike nga Prishtina, me më shumë se njëzet vjet përvojë në mësimdhënien e artit për fëmijë dhe studentë.",
+"Based in": "Jeton në",
+"Prishtina, Kosovo": "Prishtinë, Kosovë",
+"Teaches": "Jep mësim",
+"“Ismail Qemali” school and the Faculty of Arts, University of Prishtina": "Shkolla “Ismail Qemali” dhe Fakulteti i Arteve, Universiteti i Prishtinës",
+"Research": "Kërkimi",
+"PhD candidate, History of Art, UKIM Skopje": "Kandidate për doktoraturë, Histori e Artit, UKIM Shkup",
+"In the gallery, 2026": "Në galeri, 2026",
+"Recent": "Së fundi",
+"Recent exhibitions and projects.": "Ekspozitat dhe projektet më të fundit.",
+"All work →": "Të gjitha veprat →",
+"Sep 2026": "Shtator 2026",
+"Hani Fest 2026": "Hani Fest 2026",
+"Participating artist, Hani i 2 Robertëve": "Artiste pjesëmarrëse, Hani i 2 Robertëve",
+"International invitational poster exhibition": "Ekspozitë ndërkombëtare e posterit me ftesë",
+"Aug 2026": "Gusht 2026",
+"Featured artist, Artista de Colores": "Artiste e veçuar, Artista de Colores",
+"Cover of issue no. 64": "Në kopertinën e numrit 64",
+"Jun 2026": "Qershor 2026",
+"Origin Trace, solo exhibition": "Gjurmë Origjine, ekspozitë personale",
+"Raum für Kunst, Paderborn, Germany": "Raum für Kunst, Paderborn, Gjermani",
+"Apr 2026": "Prill 2026",
+"The Noise of Meaning": "Zhurma e kuptimit",
+"Solo exhibition, National Gallery, Çifte Hamam, Skopje": "Ekspozitë personale, Galeria Nacionale, Çifte Hamam, Shkup",
+"Interview on Prizma": "Intervistë në Prizma",
+"Alsat television": "Televizioni Alsat",
+"Oct 2025": "Tetor 2025",
+"Soil of Lule": "Toka e Lules",
+"Solo exhibition, Harvard University & MIT, Boston": "Ekspozitë personale, Universiteti i Harvardit dhe MIT, Boston",
+"Paintings": "Piktura",
+"from the studio": "nga atelieja",
+"Recent paintings.": "Pikturat e fundit.",
+"See more →": "Shiko më shumë →",
+"80 × 100 cm · mixed media": "80 × 100 cm · teknikë e kombinuar",
+"Deep (Thellësi)": "Thellësi",
+"90 × 110 cm · mixed media": "90 × 110 cm · teknikë e kombinuar",
+"Code (Shifër)": "Shifër",
+"the artist": "artistja",
+"The daughter of the painter and professor Kadrush Rama, Luljeta grew up surrounded by art. Her work combines graphic design with painting, typography, fragments and nature. She often works in the rain and lets the weather become part of the piece.": "E bija e piktorit dhe profesorit Kadrush Rama, Luljeta u rrit e rrethuar nga arti. Puna e saj ndërthur dizajnin grafik me pikturën, tipografinë, fragmentin dhe natyrën. Shpesh punon në shi dhe e lë motin të bëhet pjesë e veprës.",
+"Since 2009 she has taught visual arts at “Ismail Qemali” school in Prishtina. Since 2023 she has also lectured in Visual Communication at the University of Prishtina.": "Që nga viti 2009 jep mësim artet pamore në shkollën “Ismail Qemali” në Prishtinë, ndërsa që nga viti 2023 ligjëron edhe Komunikim Vizual në Universitetin e Prishtinës.",
+"Read more →": "Lexo më shumë →",
+"who she is": "kush është",
+"Artist, designer, teacher and researcher.": "Artiste, dizajnere, mësuese dhe studiuese.",
+"Luljeta Rama Muçaj is a visual artist, graphic designer and lecturer from Prishtina, with more than twenty years in art education and contemporary practice.": "Luljeta Rama Muçaj është artiste vizuale, dizajnere grafike dhe ligjëruese nga Prishtina, me mbi njëzet vjet përvojë në arsimin artistik dhe në praktikën bashkëkohore.",
+"Story": "Rrugëtimi",
+"Portrait": "Portret",
+"Luljeta grew up in Prishtina, the second of four children in a family of two professors. Her father, Kadrush Rama, is a painter known in Kosovo and abroad, and his influence shaped the education and creativity of all his children.": "Luljeta u rrit në Prishtinë, e dyta nga katër fëmijët e një familjeje me dy profesorë. I ati, Kadrush Rama, është piktor i njohur në Kosovë dhe jashtë saj, dhe ndikimi i tij e formësoi edukimin dhe krijimtarinë e të gjithë fëmijëve të tij.",
+"In 1996 she began studying Graphic Design at the Academy of Arts, University of Prishtina, and graduated in 2003. From 1999 to 2004 she lived in the United States. In New York she assisted with visual arts teaching at a private school and worked in two graphic design studios and print shops.": "Në vitin 1996 nisi studimet për Dizajn Grafik në Akademinë e Arteve të Universitetit të Prishtinës dhe u diplomua në vitin 2003. Nga viti 1999 deri në vitin 2004 jetoi në Shtetet e Bashkuara. Në Nju Jork ndihmoi në mësimdhënien e arteve pamore në një shkollë private dhe punoi në dy studio të dizajnit grafik dhe shtypshkronja.",
+"Back in Prishtina she taught art at the International School of Pristina. She completed a Master's in Graphic Design at the University of Prishtina in 2008. Since 2025 she has been a PhD candidate in History of Art and Archaeology at Ss. Cyril and Methodius University (UKIM) in Skopje, mentored by Prof. Dr. Antonio Jakimoski.": "Pas kthimit në Prishtinë dha mësim art në Shkollën Ndërkombëtare të Prishtinës. Në vitin 2008 përfundoi studimet master për Dizajn Grafik në Universitetin e Prishtinës. Që nga viti 2025 është kandidate për doktoraturë në Histori të Artit dhe Arkeologji në Universitetin “Shën Cirili dhe Metodi” (UKIM) në Shkup, nën mentorimin e Prof. Dr. Antonio Jakimoski.",
+"Practice": "Krijimtaria",
+"often in the rain": "shpesh në shi",
+"She combines graphic design with painting, type and nature.": "Ndërthur dizajnin grafik me pikturën, tipografinë dhe natyrën.",
+"Painting": "Pikturë",
+"Abstract and mixed-media painting, with techniques and textures inspired by natural phenomena. She often works outdoors in the rain.": "Pikturë abstrakte dhe me teknikë të kombinuar, me teknika dhe tekstura të frymëzuara nga dukuritë natyrore. Shpesh punon jashtë, nën shi.",
+"Graphic design": "Dizajn grafik",
+"Conceptual graphic design, typography and posters.": "Dizajn grafik konceptual, tipografi dhe postera.",
+"Photography & objects": "Fotografi dhe objekte",
+"Photography and mixed-media objects built from fragments.": "Fotografi dhe objekte me teknikë të kombinuar, të ndërtuara nga fragmente.",
+"Recurring themes: identity, memory, voice and silence, soil and roots, dialogue, and structures of mediation.": "Tema që përsëriten: identiteti, kujtesa, zëri dhe heshtja, toka dhe rrënjët, dialogu dhe strukturat e ndërmjetësimit.",
+"Working outdoors": "Duke punuar jashtë",
+"Education": "Arsimimi",
+"2025–now": "2025–sot",
+"PhD candidate, History of Art and Archaeology": "Kandidate për doktoraturë, Histori e Artit dhe Arkeologji",
+"Faculty of Philosophy, Ss. Cyril and Methodius University (UKIM), Skopje. Mentor: Prof. Dr. Antonio Jakimoski": "Fakulteti i Filozofisë, Universiteti “Shën Cirili dhe Metodi” (UKIM), Shkup. Mentor: Prof. Dr. Antonio Jakimoski",
+"Master in Graphic Design": "Master në Dizajn Grafik",
+"Faculty of Arts, University of Prishtina “Hasan Prishtina”": "Fakulteti i Arteve, Universiteti i Prishtinës “Hasan Prishtina”",
+"Bachelor in Graphic Design / Graphic Arts": "Bachelor në Dizajn Grafik / Arte Grafike",
+"Faculty of Arts, University of Prishtina. Recognised as equivalent to a US bachelor's degree by World Education Services, New York": "Fakulteti i Arteve, Universiteti i Prishtinës. E njohur si e barasvlershme me diplomën bachelor amerikane nga World Education Services, Nju Jork",
+"Honours": "Nderime",
+"Chair of the jury": "Kryetare e jurisë",
+"Exhibition in Shkodër, 28 November 2025": "Ekspozita në Shkodër, 28 nëntor 2025",
+"Panellist": "Paneliste",
+"Scientific symposium “Integrating art, drama and theatre in education”, 5 June 2024": "Simpoziumi shkencor “Integrimi i artit, dramës dhe teatrit në edukim”, 5 qershor 2024",
+"Distinguished Teacher of the Year": "Mësuese e Dalluar e Vitit",
+"Municipal Directorate of Education, Prishtina": "Drejtoria Komunale e Arsimit, Prishtinë",
+"Ambassador of Kosovo, Colours of Peace": "Ambasadore e Kosovës, Ngjyrat për Paqe",
+"Stazzema, Italy, promoting the art of Kosovo's students internationally": "Stazzema, Itali, për promovimin ndërkombëtar të krijimtarisë së nxënësve të Kosovës",
+"Ongoing": "Në vazhdim",
+"Collaborator, Gallery MC, New York": "Bashkëpunëtore, Gallery MC, Nju Jork",
+"Promoting Albanian artists": "Për promovimin e artistëve shqiptarë",
+"Languages": "Gjuhët",
+"Albanian (native), English, Serbo-Croatian": "Shqip (gjuha amtare), anglisht, serbokroatisht",
+"Get in touch →": "Kontaktoni →",
+"since 2000": "që nga viti 2000",
+"Exhibitions, festivals and features.": "Ekspozita, festivale dhe prezantime.",
+"Selected recent projects, followed by her solo and group exhibitions. Click an image to see it larger.": "Projekte të zgjedhura të viteve të fundit, të ndjekura nga ekspozitat e saj personale dhe kolektive. Klikoni mbi një imazh për ta parë më të madh.",
+"mixed media": "teknikë e kombinuar",
+"Layered, textured surfaces, many of them made outdoors.": "Sipërfaqe me shtresa dhe tekstura, shumë prej tyre të krijuara nën qiell të hapur.",
+"“Expressing my feelings through art is something I would never give up. Taking what is close to my own experience and putting it on canvas is a process I love.”": "“Shprehja e ndjenjave të mia përmes artit është një tipar nga i cili nuk do të hiqja dorë. Të kesh afërsinë me përvojat dhe ta vendosësh atë në një kanavacë është një proces që më pëlqen.”",
+"Mixed media": "Teknikë e kombinuar",
+"Painting · mixed media": "Pikturë · teknikë e kombinuar",
+"Titles and sizes for": "Titujt dhe përmasat e veprave",
+"Deep": "Thellësi",
+"and": "dhe",
+"Code": "Shifër",
+"come from the catalogue of her 2023 exhibition in Shkodër.": "janë marrë nga katalogu i ekspozitës së saj në Shkodër, më 2023.",
+"“Luljeta Rama Muçaj is in the ranks of new creators of painting.”": "“Luljeta Rama Muçaj hyn në radhët e krijuesve të rinj të pikturës.”",
+"Musa Prelvukaj, curator · In the Spaces of Abstract Composition, 2023": "Musa Prelvukaj, kurator · Në hapësirat e kompozicionit abstrakt, 2023",
+"Posters": "Postera",
+"graphic design": "dizajn grafik",
+"Posters about dialogue, identity and the space between.": "Postera për dialogun, identitetin dhe hapësirën ndërmjet.",
+"Her recent graphic design work, shown in": "Puna e saj më e re në dizajn grafik, e prezantuar në",
+", her design and multimedia exhibition at the Çifte Hamam in Skopje (2026).": ", ekspozitën e saj të dizajnit dhe multimedias në Çifte Hamam në Shkup (2026).",
+"Masks & reliefs": "Maska dhe reliev",
+"faces": "fytyra",
+"Faces, masks and surfaces.": "Fytyra, maska dhe sipërfaqe.",
+"Mask series · mixed media": "Seria e maskave · teknikë e kombinuar",
+"Release (Çlirim)": "Çlirim",
+"60 × 90 cm · mixed media": "60 × 90 cm · teknikë e kombinuar",
+"Relief · mixed media": "Reliev · teknikë e kombinuar",
+"Projects": "Projekte",
+"Cover, issue no. 64": "Kopertina, numri 64",
+"August 2026 · Feature": "Gusht 2026 · Prezantim",
+"The international online magazine": "Revista ndërkombëtare online",
+"put Luljeta on the cover of its August 2026 issue as featured artist. The cover places her portrait beside one of her paintings, a dense, sculpted surface of layered paint.": "e vendosi Luljetën në kopertinën e numrit të gushtit 2026 si artiste të veçuar. Kopertina e vendos portretin e saj pranë njërës prej pikturave të saj, një sipërfaqe e dendur dhe e skalitur me shtresa ngjyre.",
+"Publication": "Botimi",
+"Artista de Colores, international online magazine": "Artista de Colores, revistë ndërkombëtare online",
+"Issue": "Numri",
+"No. 64, August 2026": "Nr. 64, gusht 2026",
+"Festival poster": "Posteri i festivalit",
+"September 2026 · Festival": "Shtator 2026 · Festival",
+"Luljeta was one of the participating artists at Hani Fest, a week-long art festival held at Hani i 2 Robertëve.": "Luljeta ishte një nga artistët pjesëmarrës në Hani Fest, një festival arti njëjavor në Hanin e 2 Robertëve.",
+"Dates": "Datat",
+"21–26 September 2026": "21–26 shtator 2026",
+"Venue": "Vendi",
+"Role": "Roli",
+"Participating artist": "Artiste pjesëmarrëse",
+"Int'l poster exhibition 2026": "Ekspozitë ndërkombëtare e posterit 2026",
+"Title set in type": "Titulli në tipografi",
+"September 2026 · Exhibition": "Shtator 2026 · Ekspozitë",
+"An international invitational poster exhibition from Worldwide Graphic Designers about white space in visual communication. Fifty designers and educators from around the world were each invited to make a poster about it. Luljeta was one of them.": "Ekspozitë ndërkombëtare e posterit me ftesë nga Worldwide Graphic Designers, kushtuar hapësirës së bardhë në komunikimin vizual. Pesëdhjetë dizajnerë dhe edukatorë nga e gjithë bota u ftuan të krijonin secili nga një poster për këtë temë. Luljeta ishte një prej tyre.",
+"Organiser": "Organizatori",
+"Exhibition": "Ekspozita",
+"14 September 2026": "14 shtator 2026",
+"Format": "Formati",
+"Poster, 70 × 100 cm": "Poster, 70 × 100 cm",
+"In the gallery": "Në galeri",
+"2025–now · Research": "2025–sot · Kërkim",
+"Doctoral studies in History of Art": "Studimet e doktoraturës në Histori të Artit",
+"Luljeta is a PhD candidate in History of Art and Archaeology at the Faculty of Philosophy, Ss. Cyril and Methodius University (UKIM) in Skopje. Her mentor is Prof. Dr. Antonio Jakimoski.": "Luljeta është kandidate për doktoraturë në Histori të Artit dhe Arkeologji në Fakultetin e Filozofisë të Universitetit “Shën Cirili dhe Metodi” (UKIM) në Shkup. Mentori i saj është Prof. Dr. Antonio Jakimoski.",
+"University": "Universiteti",
+"Ss. Cyril and Methodius (UKIM), Skopje": "“Shën Cirili dhe Metodi” (UKIM), Shkup",
+"Programme": "Programi",
+"History of Art and Archaeology": "Histori e Artit dhe Arkeologji",
+"Mentor": "Mentori",
+"Gallery & press": "Galeri dhe media",
+"In the gallery and on air.": "Në galeri dhe në ekran.",
+"Installation view · Skopje, 2026": "Pamje nga instalimi · Shkup, 2026",
+"Fabric runners and posters set into the niches of the Çifte Hamam": "Shtigje pëlhure dhe postera të vendosur në kamaret e Çifte Hamamit",
+"Setting up": "Përgatitja",
+"Laying out the work before the opening": "Vendosja e veprave para hapjes",
+"The Noise of Meaning, installation view": "Zhurma e kuptimit, pamje nga instalimi",
+"Çifte Hamam, Skopje, 2026": "Çifte Hamam, Shkup, 2026",
+"The Noise of Meaning, posters and fabric runners": "Zhurma e kuptimit, postera dhe shtigje pëlhure",
+"The Noise of Meaning, exhibition poster": "Zhurma e kuptimit, posteri i ekspozitës",
+"National Gallery of North Macedonia, 20 April 2026": "Galeria Nacionale e Maqedonisë së Veriut, 20 prill 2026",
+"Përplasja e krijimit, exhibition poster": "Përplasja e krijimit, posteri i ekspozitës",
+"Balsha Tower, Ulcinj, 30 August 2024": "Kulla e Balshajve, Ulqin, 30 gusht 2024",
+"Gallery wall, curated by Fatmir Juka": "Mur i galerisë, kuruar nga Fatmir Juka",
+"Solo exhibition": "Ekspozitë personale",
+"At the opening": "Në hapjen e ekspozitës",
+"Opening night": "Mbrëmja e hapjes",
+"17 April 2026 · Alsat": "17 prill 2026 · Alsat",
+"Interview on": "Intervistë në",
+", with two of her paintings on the studio wall": ", me dy nga pikturat e saj në murin e studios",
+"In the press": "Në media",
+"KultPlus, on Facebook": "KultPlus, në Facebook",
+"Between Voice and Silence at Chrostiras": "Between Voice and Silence në Chrostiras",
+"Dashart, text by Fatmir Juka": "Dashart, tekst nga Fatmir Juka",
+"ObserverKult, interview": "ObserverKult, intervistë",
+"Solo exhibitions": "Ekspozita personale",
+"selected": "përzgjedhje",
+"Origin Trace (Gjurmë Origjine)": "Gjurmë Origjine (Origin Trace)",
+"Graphic design and multimedia. Raum für Kunst, Paderborn, Germany, 8 June 2026. Curator: Assoc. Prof. Rrezeart Galica": "Dizajn grafik dhe multimedia. Raum für Kunst, Paderborn, Gjermani, 8 qershor 2026. Kurator: Prof. asoc. Rrezeart Galica",
+"Zhurma e kuptimit (The Noise of Meaning)": "Zhurma e kuptimit",
+"Graphic design and multimedia. National Gallery of North Macedonia, Çifte Hamam, Skopje, opened 20 April 2026. Curator: Narona Luma Veseli ·": "Dizajn grafik dhe multimedia. Galeria Nacionale e Maqedonisë së Veriut, Çifte Hamam, Shkup, e hapur më 20 prill 2026. Kuratore: Narona Luma Veseli ·",
+"Between Voice and Silence": "Between Voice and Silence (Mes zërit dhe heshtjes)",
+"Chrostiras, Thessaloniki, 8 May 2026. Curator: Fatmir Juka": "Chrostiras, Selanik, 8 maj 2026. Kurator: Fatmir Juka",
+"Soil of Lule (Toka e Lules)": "Toka e Lules (Soil of Lule)",
+"Harvard University & MIT, Boston, 25 October 2025. Curator: Stefano Romano": "Universiteti i Harvardit dhe MIT, Boston, 25 tetor 2025. Kurator: Stefano Romano",
+"Face on the Surface": "Face on the Surface (Fytyra në sipërfaqe)",
+"Agora Argiri Gallery, Patras, Greece, 19 November 2025. Curator: Fatmir Juka": "Galeria Agora Argiri, Patra, Greqi, 19 nëntor 2025. Kurator: Fatmir Juka",
+"Embassy of Kosovo, Athens": "Ambasada e Kosovës, Athinë",
+"Gallery MC, Manhattan, New York": "Gallery MC, Manhattan, Nju Jork",
+"October 2024": "Tetor 2024",
+"Përplasja e krijimit (The Clash of Creation)": "Përplasja e krijimit",
+"Balsha Tower, Ulcinj, Montenegro, 30 August 2024": "Kulla e Balshajve, Ulqin, Mali i Zi, 30 gusht 2024",
+"Dheu pas shiut… (Soil After Rain)": "Dheu pas shiut…",
+"National Museum of Kosovo, Prishtina. Curator: Fatmir Juka ·": "Muzeu Kombëtar i Kosovës, Prishtinë. Kurator: Fatmir Juka ·",
+"Watch the video ↗": "Shiko videon ↗",
+"Dritëhija artistike (Artistic Light and Shadow)": "Dritëhija artistike",
+"Gallery of Arts, Tetovo, 30 November – 5 December 2023. Curator: Nora Halimi ·": "Galeria e Arteve, Tetovë, 30 nëntor – 5 dhjetor 2023. Kuratore: Nora Halimi ·",
+"Në hapësirat e kompozicionit abstrakt (In the Spaces of Abstract Composition)": "Në hapësirat e kompozicionit abstrakt",
+"Gallery of Arts, Shkodër, 15–25 September 2023. Curator: Musa Prelvukaj ·": "Galeria e Arteve, Shkodër, 15–25 shtator 2023. Kurator: Musa Prelvukaj ·",
+"Ulcinj Castle; European Commission Building, Prishtina": "Kalaja e qytetit, Ulqin; Ndërtesa e Komisionit Evropian, Prishtinë",
+"Ekspoart.40 Gallery, Prishtina": "Galeria Ekspoart.40, Prishtinë",
+"Group exhibitions": "Ekspozita kolektive",
+"& projects": "dhe projekte",
+"Niğde Municipal Art Gallery, Turkey, 11–19 April 2026. Curator: Safa Büte": "Galeria e Artit e Komunës së Niğdes, Turqi, 11–19 prill 2026. Kurator: Safa Büte",
+"No War Art Exhibition 2026": "Ekspozita e artit No War 2026",
+"International online exhibition, certificate of participation": "Ekspozitë ndërkombëtare online, certifikatë pjesëmarrjeje",
+"And the UAE Family Festival “One family, many stories”": "Dhe Festivali i Familjes në Emiratet e Bashkuara Arabe “One family, many stories”",
+"International Poster Festival": "Festivali Ndërkombëtar i Posterit",
+"Group exhibition, 16 December 2025": "Ekspozitë kolektive, 16 dhjetor 2025",
+"EXPO METRO, Barcelona": "EXPO METRO, Barcelonë",
+"Also “All the children cry in the same language”, Cappadocia; Gjilan; Ferizaj": "Gjithashtu “All the children cry in the same language”, Kapadoki; Gjilan; Ferizaj",
+"Embassy of Kosovo, Bern": "Ambasada e Kosovës, Bernë",
+"Albanian Culture Week, 2nd edition, Prizren": "Java e Kulturës Shqiptare, edicioni i 2-të, Prizren",
+"Also Expo Autumn 2 and Expo Summer, Prishtina; Prishtina Art International Residency; “Artists for Artists” art caravan, North Macedonia; Kosovo Independence Day celebration; “Women for Women”, Peja Gallery; Flaka e Janarit, Gjilan": "Gjithashtu Ekspo Vjeshta 2 dhe Ekspo Verë, Prishtinë; Rezidenca Internacionale Prishtina Art; karavani artistik “Artistët për artistë”, Maqedoni e Veriut; Festimi i Pavarësisë së Kosovës; “Gratë për gratë”, Galeria e Pejës; Flaka e Janarit, Gjilan",
+"Figurative Expressions – as Spiritual Nourishment": "Shprehjet figurative – si ushqim shpirtëror",
+"60 artists from Albanian lands, Peja Gallery. Also Ulpiana Art Center 2022": "60 artistë nga trevat shqiptare, Galeria e Pejës. Gjithashtu Ulpiana Art Center 2022",
+"Archiade Atelier, Dubai Design District, UAE": "Archiade Atelier, Dubai Design District, EBA",
+"Inauguration of Rita Ora as Kosovo's ambassador": "Inaugurimi i Rita Orës si ambasadore e Kosovës",
+"Embassy of Kosovo, London": "Ambasada e Kosovës, Londër",
+"November Salon, Prishtina": "Salloni i Nëntorit, Prishtinë",
+"Also 2009 and 2008": "Gjithashtu 2009 dhe 2008",
+"Poetry Festival, Batllava": "Festivali i Poezisë, Batllavë",
+"Spring Salon, Prishtina": "Salloni Pranveror, Prishtinë",
+"Also Ekspo Pranvera 07, Podujeva": "Gjithashtu Ekspo Pranvera 07, Podujevë",
+"Hani i 2 Robertëve, Prishtina": "Hani i 2 Robertëve, Prishtinë",
+"Students for Students, Prishtina": "Studentët për studentë, Prishtinë",
+"View Point, New York": "View Point, Nju Jork",
+"20+ years": "20+ vjet",
+"Twenty years of teaching children and students to make art.": "Njëzet vjet duke u mësuar fëmijëve dhe studentëve të krijojnë art.",
+"Luljeta has taught art since 2004, from preschool classes to university students. She teaches visual arts at “Ismail Qemali” school and lectures at the Faculty of Arts, University of Prishtina.": "Luljeta jep mësim art që nga viti 2004, nga klasat parashkollore deri te studentët universitarë. Sot jep mësim artet pamore në shkollën “Ismail Qemali” dhe ligjëron në Fakultetin e Arteve të Universitetit të Prishtinës.",
+"Now": "Sot",
+"Visual Communication": "Komunikim Vizual",
+"University of Prishtina · since Oct 2023": "Universiteti i Prishtinës · që nga tetori 2023",
+"External lecturer for students in years II–IV of the Department of Dramaturgy, Faculty of Arts.": "Ligjëruese e jashtme për studentët e viteve II–IV të Departamentit të Dramaturgjisë, Fakulteti i Arteve.",
+"Basics of Design": "Bazat e Dizajnit",
+"Design fundamentals for students of the Department of Dramaturgy.": "Bazat e dizajnit për studentët e Departamentit të Dramaturgjisë.",
+"Visual arts, grades 6–9": "Arte pamore, klasat 6–9",
+"“Ismail Qemali” school · since Jan 2009": "Shkolla “Ismail Qemali” · që nga janari 2009",
+"Theory, practice and assessment, lesson planning and working with parents.": "Teori, praktikë dhe vlerësim, planifikim mësimor dhe bashkëpunim me prindërit.",
+"Approach": "Qasja",
+"in her words": "me fjalët e saj",
+"Nurture curiosity and encourage artistic expression.": "Të ushqejmë kureshtjen dhe të nxisim shprehjen artistike.",
+"Open horizons": "Horizonte të reja",
+"Show students what art can be, so they find creative paths they hadn't imagined.": "T'u tregojë nxënësve se çfarë mund të jetë arti, që të zbulojnë rrugë krijuese që nuk i kishin imagjinuar.",
+"Build focus": "Përqendrim",
+"Use new methods, materials and techniques, drawn from international research on children's art education.": "Me metoda, materiale dhe teknika të reja, të mbështetura në kërkimet ndërkombëtare për edukimin artistik të fëmijëve.",
+"Courage": "Guxim",
+"Help students look at life with courage and creativity, and enjoy what they achieve.": "T'i ndihmojë nxënësit ta shohin jetën me guxim dhe krijimtari, dhe të gëzohen për atë që arrijnë.",
+"Students' work": "Punimet e nxënësve",
+"abroad": "jashtë vendit",
+"Through the international foundation": "Përmes fondacionit ndërkombëtar",
+"Colours of Peace": "Ngjyrat për Paqe",
+", her students' work has been shown in Dubai (2019), Ecuador (2020–2022), Rome (2021–2022) and at a museum in Barcelona (2022). In 2020 one of her students placed third among representatives of 145 countries in Ecuador. In 2023 the foundation appointed her its Ambassador of Kosovo.": ", punimet e nxënësve të saj janë ekspozuar në Dubai (2019), në Ekuador (2020–2022), në Romë (2021–2022) dhe në një muze në Barcelonë (2022). Në vitin 2020 një nga nxënësit e saj zuri vendin e tretë mes përfaqësuesve të 145 shteteve në Ekuador. Në vitin 2023 fondacioni e emëroi Ambasadore të Kosovës.",
+"In 2023 she twinned her school with the Liceo Artistico in Valenza, Italy. She also organises school exhibitions and has made local and national TV programmes, including on RTK, about talented students and their work.": "Në vitin 2023 e binjakëzoi shkollën e saj me Liceun Artistik në Valenza të Italisë. Ajo organizon edhe ekspozita shkollore dhe ka realizuar emisione televizive lokale dhe kombëtare, përfshirë në RTK, për nxënësit e talentuar dhe punimet e tyre.",
+"Municipality of Prishtina, 2023": "Komuna e Prishtinës, 2023",
+"Teaching CV": "Përvoja në mësimdhënie",
+"2023–now": "2023–sot",
+"Lecturer, Department of Dramaturgy": "Ligjëruese, Departamenti i Dramaturgjisë",
+"Faculty of Arts, University of Prishtina “Hasan Prishtina”. Visual Communication and Basics of Design": "Fakulteti i Arteve, Universiteti i Prishtinës “Hasan Prishtina”. Komunikim Vizual dhe Bazat e Dizajnit",
+"2009–now": "2009–sot",
+"Art teacher": "Mësuese e artit",
+"“Ismail Qemali” primary and lower secondary school, Prishtina. Grades 6–9": "Shkolla fillore dhe e mesme e ulët “Ismail Qemali”, Prishtinë. Klasat 6–9",
+"ILG International Learning Group, Prishtina. Preschool to grade 7": "ILG International Learning Group, Prishtinë. Nga parashkollori deri në klasën 7",
+"International School of Pristina. Grades 1–9, catalogues and exhibition visits": "Shkolla Ndërkombëtare e Prishtinës. Klasat 1–9, katalogë dhe vizita në ekspozita",
+"Art education assistant, New York": "Asistente në edukimin artistik, Nju Jork",
+"Private school, through the NGO IRC": "Shkollë private, përmes OJQ-së IRC",
+"say hello": "na shkruani",
+"Exhibitions, commissions, teaching.": "Ekspozita, porosi, mësimdhënie.",
+"Get in touch about exhibitions, poster and design commissions, workshops or lectures.": "Kontaktoni për ekspozita, porosi posterash dhe dizajni, punëtori ose ligjërata.",
+"Details": "Të dhënat",
+"Copy address": "Kopjo adresën",
+"Albanian, English, Serbo-Croatian": "Shqip, anglisht, serbokroatisht",
+"Enquiry": "Kërkesë",
+"write it here": "shkruajeni këtu",
+"Tell her what you have in mind.": "Tregojini çfarë keni në mendje.",
+"Your name": "Emri juaj",
+"Your email": "Email-i juaj",
+"Topic": "Tema",
+"An exhibition": "Një ekspozitë",
+"A poster or design commission": "Një porosi posteri ose dizajni",
+"A painting": "Një pikturë",
+"A workshop or lecture": "Një punëtori ose ligjëratë",
+"Something else": "Diçka tjetër",
+"Message": "Mesazhi",
+"Prepare my message": "Përgatit mesazhin",
+"A few lines about the project, dates and place.": "Disa rreshta për projektin, datat dhe vendin.",
+"Prishtina": "Prishtinë",
+"← Prev": "← Para",
+"Next →": "Pas →",
+"Close": "Mbyll",
+"Image": "Imazh",
+"August 2026": "Gusht 2026",
+"Featured artist, Artista de Colores, issue no. 64": "Artiste e veçuar, Artista de Colores, numri 64",
+"September 2026": "Shtator 2026",
+"Installation view": "Pamje nga instalimi",
+"Fabric runners and posters set into the gallery niches": "Shtigje pëlhure dhe postera në kamaret e galerisë",
+"Mask series": "Seria e maskave",
+"Mask, mixed media": "Maskë, teknikë e kombinuar",
+"Relief": "Reliev",
+"Luljeta at work outside": "Luljeta duke punuar jashtë",
+"Stop": "Stop",
+"Copied": "U kopjua",
+"Press ⌘C / Ctrl+C": "Shtypni ⌘C / Ctrl+C",
+"Copy message": "Kopjo mesazhin",
+"Add your name and a valid email so she can reply.": "Shkruani emrin dhe një email të vlefshëm që ajo t'ju përgjigjet.",
+"Luljeta in a white gallery with stone arches and framed paintings on the walls": "Luljeta në një galeri të bardhë me harqe guri dhe piktura në mure",
+"Stop, textured abstract painting by Luljeta Rama Muçaj": "Stop, pikturë abstrakte me tekstura nga Luljeta Rama Muçaj",
+"Deep (Thellësi), textured abstract painting by Luljeta Rama Muçaj": "Thellësi, pikturë abstrakte me tekstura nga Luljeta Rama Muçaj",
+"Code (Shifër), textured abstract painting by Luljeta Rama Muçaj": "Shifër, pikturë abstrakte me tekstura nga Luljeta Rama Muçaj",
+"Black and white portrait of Luljeta Rama Muçaj laughing": "Portret bardh e zi i Luljeta Rama Muçajt duke qeshur",
+"Luljeta kneeling on the ground outdoors, working on a painting": "Luljeta e gjunjëzuar në tokë jashtë, duke punuar një pikturë",
+"Textured abstract painting by Luljeta Rama Muçaj": "Pikturë abstrakte me tekstura nga Luljeta Rama Muçaj",
+"Poster by Luljeta Rama Muçaj about identity": "Poster nga Luljeta Rama Muçaj për identitetin",
+"Framed mask artwork by Luljeta Rama Muçaj on a coloured mount": "Vepër me maskë nga Luljeta Rama Muçaj, e kornizuar në sfond me ngjyrë",
+"Release, a relief of two masks set in a rough textured surface": "Çlirim, reliev me dy maska në një sipërfaqe të ashpër me tekstura",
+"Relief work with a face emerging from a textured surface": "Reliev me një fytyrë që del nga një sipërfaqe me tekstura",
+"Cover of Artista de Colores magazine, August 2026, featuring Luljeta Muçaj beside one of her textured paintings": "Kopertina e revistës Artista de Colores, gusht 2026, me Luljeta Muçajn pranë njërës prej pikturave të saj",
+"Hani Fest 2026 poster listing the participating artists": "Posteri i Hani Fest 2026 me emrat e artistëve pjesëmarrës",
+"Luljeta standing in her exhibition, with blue and red fabric runners on the floor and posters in the wall niches": "Luljeta në ekspozitën e saj, me shtigje pëlhure blu dhe të kuqe në dysheme dhe postera në kamaret e murit",
+"Luljeta and a colleague looking over work on a table in the gallery": "Luljeta dhe një koleg duke shqyrtuar punimet mbi një tavolinë në galeri",
+"The Noise of Meaning installed under the domes of the Çifte Hamam": "Zhurma e kuptimit e instaluar nën kupolat e Çifte Hamamit",
+"Yellow, red and blue fabric runners leading to posters in the gallery niches": "Shtigje pëlhure të verdha, të kuqe dhe blu që të çojnë te posterat në kamaret e galerisë",
+"Poster for the solo exhibition The Noise of Meaning": "Posteri i ekspozitës personale Zhurma e kuptimit",
+"Poster for the solo exhibition Përplasja e krijimit": "Posteri i ekspozitës personale Përplasja e krijimit",
+"Three paintings on a gallery wall with the curator credit Fatmir Juka": "Tri piktura në murin e galerisë me emrin e kuratorit Fatmir Juka",
+"Luljeta with a guest in front of two large paintings": "Luljeta me një mysafir para dy pikturave të mëdha",
+"Luljeta with guests at an exhibition opening": "Luljeta me të ftuar në hapjen e një ekspozite",
+"Luljeta being interviewed in a TV studio, with two of her paintings on the wall behind": "Luljeta gjatë një interviste në studio televizive, me dy nga pikturat e saj në mur",
+"Poster “Chaos Interrupts Dialogue” by Luljeta Rama Muçaj": "Posteri “Chaos Interrupts Dialogue” nga Luljeta Rama Muçaj",
+"Poster “The Act of Dialogue” by Luljeta Rama Muçaj": "Posteri “The Act of Dialogue” nga Luljeta Rama Muçaj",
+"Poster “Between Us” by Luljeta Rama Muçaj": "Posteri “Between Us” nga Luljeta Rama Muçaj",
+"Poster “Constructed” by Luljeta Rama Muçaj": "Posteri “Constructed” nga Luljeta Rama Muçaj",
+"Poster “Loss” by Luljeta Rama Muçaj": "Posteri “Loss” nga Luljeta Rama Muçaj",
+"Poster “Exchange” by Luljeta Rama Muçaj": "Posteri “Exchange” nga Luljeta Rama Muçaj",
+"Poster “Fragments of Identity” by Luljeta Rama Muçaj": "Posteri “Fragments of Identity” nga Luljeta Rama Muçaj",
+"Poster “The Space Between Sounds” by Luljeta Rama Muçaj": "Posteri “The Space Between Sounds” nga Luljeta Rama Muçaj",
+"Poster “In Conversation” by Luljeta Rama Muçaj": "Posteri “In Conversation” nga Luljeta Rama Muçaj",
+"Poster “Seen” by Luljeta Rama Muçaj": "Posteri “Seen” nga Luljeta Rama Muçaj",
+"Poster “Distort” by Luljeta Rama Muçaj": "Posteri “Distort” nga Luljeta Rama Muçaj",
+"Poster “Temperament” by Luljeta Rama Muçaj": "Posteri “Temperament” nga Luljeta Rama Muçaj",
+"Poster “Overload” by Luljeta Rama Muçaj": "Posteri “Overload” nga Luljeta Rama Muçaj",
+"Poster “Connect” by Luljeta Rama Muçaj": "Posteri “Connect” nga Luljeta Rama Muçaj",
+"Poster “Dialogue” by Luljeta Rama Muçaj": "Posteri “Dialogue” nga Luljeta Rama Muçaj"
+};
+  let lang = 'en';
+  const t = (s) => (lang === 'sq' && SQ[s]) || s;
+  const original = new WeakMap();
+  const ATTRS = ['alt', 'placeholder', 'aria-label'];
+  function applyLang(next) {
+    lang = next;
+    document.documentElement.lang = lang;
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => n.parentElement.closest('script, style, .lang') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+    });
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      if (!original.has(n)) original.set(n, n.nodeValue);
+      const en = original.get(n);
+      const key = en.replace(/\s+/g, ' ').trim();
+      if (!key) continue;
+      const lead = en.match(/^\s*/)[0], trail = en.match(/\s*$/)[0];
+      n.nodeValue = lang === 'sq' && SQ[key] ? lead + SQ[key] + trail : en;
+    }
+    document.querySelectorAll('[alt], [placeholder], [aria-label]').forEach(el => {
+      for (const a of ATTRS) {
+        if (!el.hasAttribute(a)) continue;
+        const store = 'en' + a.replace(/-./g, m => m[1].toUpperCase()).replace(/^./, c => c.toUpperCase());
+        if (!(store in el.dataset)) el.dataset[store] = el.getAttribute(a);
+        const en = el.dataset[store];
+        el.setAttribute(a, lang === 'sq' && SQ[en] ? SQ[en] : en);
+      }
+    });
+    document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+    if (!document.getElementById('lightbox').hidden) openLb(lbIndex);
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+  document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
   /* ---------- pages ---------- */
   const views = [...document.querySelectorAll('[data-view]')];
   const names = views.map(v => v.dataset.view);
@@ -1176,10 +1574,10 @@ footer .foot-nav a:hover { color: var(--ink); }
     lbIndex = (i + IMAGES.length) % IMAGES.length;
     const im = IMAGES[lbIndex];
     lbImg.src = im.src;
-    lbImg.alt = im.title;
+    lbImg.alt = t(im.title);
     lbImg.style.filter = im.color ? 'none' : '';
-    document.getElementById('lb-kicker').textContent = im.kicker;
-    document.getElementById('lb-title').textContent = im.title;
+    document.getElementById('lb-kicker').textContent = t(im.kicker);
+    document.getElementById('lb-title').textContent = t(im.title);
     if (lb.hidden) lastFocus = document.activeElement;
     lb.hidden = false;
     document.getElementById('lb-close').focus();
@@ -1200,12 +1598,12 @@ footer .foot-nav a:hover { color: var(--ink); }
 
   /* ---------- copy ---------- */
   function copyText(text, btn, label, selectEl) {
-    const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = label, 1800); };
+    const done = () => { btn.textContent = t('Copied'); setTimeout(() => btn.textContent = t(label), 1800); };
     const fallback = () => {
       const sel = getSelection(), range = document.createRange();
       range.selectNodeContents(selectEl);
       sel.removeAllRanges(); sel.addRange(range);
-      btn.textContent = 'Press ⌘C / Ctrl+C';
+      btn.textContent = t('Press ⌘C / Ctrl+C');
     };
     try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
   }
@@ -1221,11 +1619,21 @@ footer .foot-nav a:hover { color: var(--ink); }
     e.preventDefault();
     const d = Object.fromEntries(new FormData(form));
     if (!d.name.trim() || !/^\S+@\S+\.\S+$/.test(d.email)) {
-      status.textContent = 'Add your name and a valid email so she can reply.';
+      status.textContent = t('Add your name and a valid email so she can reply.');
       return;
     }
-    draft.textContent =
-`To: ${mailEl.textContent}
+    draft.textContent = lang === 'sq'
+? `Për: ${mailEl.textContent}
+Tema: Kërkesë: ${d.topic}
+
+E nderuar Luljeta,
+
+${d.message.trim() || 'Do të dëshiroja t\'ju kontaktoja për një projekt.'}
+
+Me respekt,
+${d.name}
+${d.email}`
+: `To: ${mailEl.textContent}
 Subject: Enquiry: ${d.topic}
 
 Dear Luljeta,
@@ -1238,12 +1646,17 @@ ${d.email}`;
     draft.hidden = false;
     status.textContent = '';
     const btn = document.createElement('button');
-    btn.type = 'button'; btn.className = 'btn'; btn.textContent = 'Copy message';
+    btn.type = 'button'; btn.className = 'btn'; btn.textContent = t('Copy message');
     btn.addEventListener('click', () => copyText(draft.textContent, btn, 'Copy message', draft));
     const hintText = document.createElement('span');
-    hintText.textContent = `Paste it into an email to ${mailEl.textContent}.`;
+    hintText.textContent = lang === 'sq' ? `Ngjiteni në një email për ${mailEl.textContent}.` : `Paste it into an email to ${mailEl.textContent}.`;
     status.append(btn, hintText);
   });
+
+  let startLang = 'en';
+  try { startLang = localStorage.getItem('lang') || ''; } catch (e) {}
+  if (!startLang) startLang = /^sq\b/i.test(navigator.language || '') ? 'sq' : 'en';
+  if (startLang === 'sq') applyLang('sq');
 })();
 </script>
 </body>
