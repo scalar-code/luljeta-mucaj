@@ -204,6 +204,12 @@ blockquote cite { display: block; margin-top: 14px; font-style: normal; }
 .ws-corner { position: absolute; right: 0; bottom: 0; width: 34%; aspect-ratio: 1; background: var(--ink); clip-path: polygon(100% 0, 100% 100%, 0 100%); }
 .ws .label { position: relative; z-index: 1; max-width: 60%; }
 
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 28px; }
+.shots figure { margin: 0; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.shots .wide { grid-column: 1 / -1; }
+.shots figcaption { font-size: 14px; line-height: 1.45; }
+.shots figcaption .label { display: block; margin-bottom: 2px; }
+
 /* teaching */
 .subjects { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
 .subject {
@@ -285,6 +291,7 @@ footer .foot-nav a:hover { color: var(--ink); }
   .lightbox img { max-height: 62vh; }
 }
 @media (max-width: 480px) {
+  .shots { grid-template-columns: 1fr; }
   .intro h1 { font-size: 25px; }
   .pagehead h1 { font-size: 28px; }
   form { grid-template-columns: 1fr; }
@@ -343,6 +350,7 @@ footer .foot-nav a:hover { color: var(--ink); }
           <li><a href="#work"><time datetime="2026-09">Sep 2026</time><h3>WHI TE SPA CE<span>International invitational poster exhibition</span></h3><span class="arrow">→</span></a></li>
           <li><a href="#work"><time datetime="2026-08">Aug 2026</time><h3>Featured artist, Artista de Colores<span>Cover of issue no. 64</span></h3><span class="arrow">→</span></a></li>
           <li><a href="#work"><time datetime="2026-06">Jun 2026</time><h3>Multimedia, solo exhibition<span>Raum für Kunst, Paderborn, Germany</span></h3><span class="arrow">→</span></a></li>
+          <li><a href="#work"><time datetime="2026-04">Apr 2026</time><h3>Interview on Prizma<span>Alsat television</span></h3><span class="arrow">→</span></a></li>
           <li><a href="#work"><time datetime="2025-10">Oct 2025</time><h3>Soil of Lule<span>Solo exhibition, Harvard University &amp; MIT, Boston</span></h3><span class="arrow">→</span></a></li>
         </ul>
       </div>
@@ -532,6 +540,29 @@ footer .foot-nav a:hover { color: var(--ink); }
             </dl>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap spread">
+      <div class="margin"><span class="label">Gallery &amp; press</span><span class="note">2026</span></div>
+      <div>
+        <h2>In the gallery and on air.</h2>
+        <div class="shots">
+          <figure>
+            <button class="photo-btn" type="button" data-lb="installation"><img class="photo" src="img/installation.jpg" alt="Luljeta standing in her exhibition, with blue and red fabric runners on the floor and posters in the wall niches" width="960" height="1280" loading="lazy"></button>
+            <figcaption><span class="label">Installation view</span>Fabric runners and posters set into the gallery's niches</figcaption>
+          </figure>
+          <figure>
+            <button class="photo-btn" type="button" data-lb="setup"><img class="photo" src="img/setup.jpg" alt="Luljeta and a colleague looking over work on a table in the gallery" width="960" height="1280" loading="lazy"></button>
+            <figcaption><span class="label">Setting up</span>Laying out the work before the opening</figcaption>
+          </figure>
+          <figure class="wide">
+            <button class="photo-btn" type="button" data-lb="interview"><img class="photo" src="img/interview.jpg" alt="Luljeta being interviewed in a TV studio, with two of her paintings on the wall behind" width="1179" height="588" loading="lazy"></button>
+            <figcaption><span class="label">17 April 2026 · Alsat</span>Interview on <em>Prizma</em>, with two of her paintings on the studio wall</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
@@ -757,6 +788,9 @@ footer .foot-nav a:hover { color: var(--ink); }
     { id: 'magazine', src: 'img/magazine.jpg', kicker: 'August 2026', title: 'Featured artist, Artista de Colores, issue no. 64' },
     { id: 'hanifest', src: 'img/hanifest.jpg', kicker: 'September 2026', title: 'Hani Fest 2026, Hani i 2 Robertëve' },
     { id: 'gallery', src: 'img/gallery.jpg', kicker: 'September 2026', title: 'In the gallery' },
+    { id: 'installation', src: 'img/installation.jpg', kicker: 'Installation view', title: 'Fabric runners and posters set into the gallery niches' },
+    { id: 'setup', src: 'img/setup.jpg', kicker: 'Setting up', title: 'Laying out the work before the opening' },
+    { id: 'interview', src: 'img/interview.jpg', kicker: '17 April 2026 · Alsat', title: 'Interview on Prizma' },
     { id: 'portrait', src: 'img/portrait.jpg', kicker: 'Portrait', title: 'Luljeta Rama Muçaj' },
   ];
   const lb = document.getElementById('lightbox');
