@@ -107,7 +107,7 @@ nav a[aria-current="page"]::after {
 
 /* hero */
 .hero .wrap {
-  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
   gap: 56px; padding-block: 32px 72px; align-items: end;
 }
 .intro { display: flex; flex-direction: column; gap: 28px; padding-bottom: 8px; }
@@ -120,14 +120,8 @@ nav a[aria-current="page"]::after {
 .facts dt { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--graphite); padding-top: 3px; }
 .facts dd { margin: 0; }
 
-.sheet { position: relative; min-width: 0; }
-.sheet-frame {
-  position: relative; border: 1px solid var(--rule); background: var(--paper);
-  aspect-ratio: 4 / 3; max-width: 100%; touch-action: none;
-}
-#pad { width: 100%; height: 100%; display: block; cursor: crosshair; filter: var(--canvas-filter); }
-.sheet-hint { position: absolute; top: 14px; right: 18px; pointer-events: none; transition: opacity .6s; }
-.sheet-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+.hero-photo { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.hero-photo .photo { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 60%; }
 .tools { display: flex; gap: 4px; flex-wrap: wrap; }
 .tool {
   font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
@@ -332,22 +326,10 @@ footer .foot-nav a:hover { color: var(--ink); }
           <dt>Research</dt><dd>PhD candidate, History of Art, UKIM Skopje</dd>
         </dl>
       </div>
-      <div class="sheet">
-        <div class="sheet-frame">
-          <canvas id="pad" width="1200" height="900" aria-label="Drawing sheet. Draw with your mouse or finger."></canvas>
-          <span class="note sheet-hint" id="hint">go on, draw something</span>
-        </div>
-        <div class="sheet-meta">
-          <span class="label">Warm-up still life · draw on the sheet</span>
-          <div class="tools" role="group" aria-label="Drawing tools">
-            <button class="tool" data-tool="pencil" aria-pressed="true">Pencil</button>
-            <button class="tool" data-tool="charcoal" aria-pressed="false">Charcoal</button>
-            <button class="tool" data-tool="eraser" aria-pressed="false">Eraser</button>
-            <button class="tool" id="undo" type="button">Undo</button>
-            <button class="tool" id="clear" type="button">New sheet</button>
-          </div>
-        </div>
-      </div>
+      <figure class="hero-photo">
+        <button class="photo-btn" type="button" data-lb="gallery"><img class="photo" src="img/gallery.jpg" alt="Luljeta in a white gallery with stone arches and framed paintings on the walls" width="786" height="1398"></button>
+        <span class="label">In the gallery, 2026</span>
+      </figure>
     </div>
   </div>
 
@@ -755,10 +737,6 @@ footer .foot-nav a:hover { color: var(--ink); }
 
 <script>
 (() => {
-  // seeded random so the still life looks the same every visit
-  const rng = (seed) => () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   /* ---------- pages ---------- */
   const views = [...document.querySelectorAll('[data-view]')];
   const names = views.map(v => v.dataset.view);
@@ -773,156 +751,6 @@ footer .foot-nav a:hover { color: var(--ink); }
   }
   window.addEventListener('hashchange', () => show(location.hash.slice(1), true));
   show(location.hash.slice(1), false);
-
-  /* ---------- drawing sheet ---------- */
-  const pad = document.getElementById('pad');
-  const ctx = pad.getContext('2d');
-  const W = pad.width, H = pad.height;
-  const strokes = [];
-  let tool = 'pencil';
-  let userTouched = false, current = null, finishSample = null;
-
-  const TOOLS = {
-    pencil:   { width: 2.2, alpha: 0.85, passes: 1, spread: 0 },
-    charcoal: { width: 9,   alpha: 0.18, passes: 4, spread: 3.5 },
-    eraser:   { width: 36,  alpha: 1,    passes: 1, spread: 0, erase: true },
-  };
-
-  function drawPath(pts, t, from = 1) {
-    const s = TOOLS[t];
-    ctx.save();
-    ctx.globalCompositeOperation = s.erase ? 'destination-out' : 'source-over';
-    ctx.strokeStyle = '#0b0b0b';
-    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-    for (let p = 0; p < s.passes; p++) {
-      const ox = (p - s.passes / 2) * s.spread * 0.6, oy = (p % 2 ? 1 : -1) * s.spread * 0.4;
-      ctx.globalAlpha = s.alpha;
-      ctx.lineWidth = s.width * (1 - p * 0.12);
-      ctx.beginPath();
-      const start = Math.max(0, from - 1);
-      ctx.moveTo(pts[start][0] + ox, pts[start][1] + oy);
-      for (let i = start + 1; i < pts.length; i++) ctx.lineTo(pts[i][0] + ox, pts[i][1] + oy);
-      if (pts.length === 1) ctx.lineTo(pts[0][0] + ox + 0.1, pts[0][1] + oy);
-      ctx.stroke();
-    }
-    ctx.restore();
-  }
-  function redraw() {
-    ctx.clearRect(0, 0, W, H);
-    strokes.forEach(s => drawPath(s.pts, s.tool));
-  }
-
-  function sketchEllipse(r, cx, cy, rx, ry, a0 = 0, a1 = Math.PI * 2, wob = 0.03) {
-    const pts = [], n = 60, over = 0.25 + r() * 0.2;
-    for (let i = 0; i <= n; i++) {
-      const a = a0 - over / 2 + (a1 - a0 + over) * (i / n);
-      const k = 1 + (r() - 0.5) * wob;
-      pts.push([cx + Math.cos(a) * rx * k, cy + Math.sin(a) * ry * k]);
-    }
-    return pts;
-  }
-  function sketchLine(r, x1, y1, x2, y2, j = 2) {
-    const pts = [], n = 12;
-    for (let i = 0; i <= n; i++) {
-      const t = i / n;
-      pts.push([x1 + (x2 - x1) * t + (r() - .5) * j, y1 + (y2 - y1) * t + (r() - .5) * j]);
-    }
-    return pts;
-  }
-  // a loose still life: jug, apple, pear, table edge, hatched shadows
-  function sampleStillLife() {
-    const r = rng(7), out = [];
-    const P = (pts, t = 'pencil') => out.push({ pts, tool: t });
-    P(sketchLine(r, 60, 700, 1140, 690, 3));
-    P(sketchLine(r, 90, 712, 1100, 703, 4));
-    const side = (dir) => {
-      const pts = [];
-      for (let i = 0; i <= 40; i++) {
-        const t = i / 40, y = 250 + t * 430;
-        const bulge = Math.sin(t * Math.PI * 0.95 + 0.15) * 120;
-        pts.push([520 + dir * (70 + bulge) + (r() - .5) * 2, y]);
-      }
-      return pts;
-    };
-    P(side(-1)); P(side(1));
-    P(sketchEllipse(r, 520, 250, 72, 18));
-    P(sketchEllipse(r, 520, 680, 112, 16, 0, Math.PI));
-    P([[446, 248], [418, 228], [398, 222], [410, 240], [452, 262]]);
-    P(sketchEllipse(r, 660, 380, 70, 100, -Math.PI / 2, Math.PI / 2, 0.05));
-    P(sketchEllipse(r, 652, 380, 46, 74, -Math.PI / 2, Math.PI / 2, 0.05));
-    P(sketchEllipse(r, 820, 625, 78, 70, 0, Math.PI * 2, 0.06));
-    P([[818, 560], [822, 540], [830, 522]]);
-    const pear = [];
-    for (let i = 0; i <= 70; i++) {
-      const a = (i / 70) * Math.PI * 2 + 0.3;
-      const top = Math.sin(a) < 0 ? 0.55 : 1;
-      pear.push([300 + Math.cos(a) * 62 * (Math.sin(a) < 0 ? 0.7 : 1) + (r() - .5) * 2, 600 + Math.sin(a) * 80 * top]);
-    }
-    P(pear);
-    P([[300, 556], [304, 534], [298, 520]]);
-    const hatch = (x0, x1, y0, y1, step) => {
-      for (let x = x0; x < x1; x += step) {
-        const t = (x - x0) / (x1 - x0);
-        const h = Math.sin(t * Math.PI) * (y1 - y0);
-        P(sketchLine(r, x, y0 + (y1 - y0) - h * 0.2, x + 18, y0 + (y1 - y0) - h, 1.5));
-      }
-    };
-    hatch(630, 780, 650, 690, 11);
-    hatch(895, 990, 660, 690, 10);
-    for (let y = 300; y < 640; y += 14) {
-      const t = (y - 250) / 430, edge = 520 + 70 + Math.sin(t * Math.PI * 0.95 + 0.15) * 120;
-      P(sketchLine(r, edge - 46, y + 10, edge - 6, y - 12, 1.5));
-    }
-    return out;
-  }
-
-  const sample = sampleStillLife();
-  if (reduce) { strokes.push(...sample); redraw(); }
-  else {
-    // draw the still life in, one stroke at a time
-    let si = 0, pi = 1;
-    const step = () => {
-      if (userTouched) return;
-      for (let k = 0; k < 6 && si < sample.length; k++) {
-        const s = sample[si];
-        pi = Math.min(pi + 3, s.pts.length);
-        drawPath(s.pts.slice(0, pi), s.tool, Math.max(1, pi - 3));
-        if (pi >= s.pts.length) { strokes.push(s); si++; pi = 1; }
-      }
-      if (si < sample.length) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-    finishSample = () => { sample.slice(si).forEach(s => strokes.push(s)); si = sample.length; redraw(); };
-  }
-
-  const hint = document.getElementById('hint');
-  const touch = () => { if (!userTouched) { userTouched = true; if (finishSample) finishSample(); hint.style.opacity = 0; } };
-  const pos = (e) => {
-    const b = pad.getBoundingClientRect();
-    return [(e.clientX - b.left) * W / b.width, (e.clientY - b.top) * H / b.height];
-  };
-  pad.addEventListener('pointerdown', (e) => {
-    touch();
-    pad.setPointerCapture(e.pointerId);
-    current = { pts: [pos(e)], tool };
-    strokes.push(current);
-    drawPath(current.pts, tool);
-  });
-  pad.addEventListener('pointermove', (e) => {
-    if (!current) return;
-    current.pts.push(pos(e));
-    drawPath(current.pts, current.tool, current.pts.length - 1);
-  });
-  const end = () => { current = null; };
-  pad.addEventListener('pointerup', end);
-  pad.addEventListener('pointercancel', end);
-
-  document.querySelectorAll('.tool[data-tool]').forEach(b => b.addEventListener('click', () => {
-    tool = b.dataset.tool;
-    document.querySelectorAll('.tool[data-tool]').forEach(o => o.setAttribute('aria-pressed', o === b));
-  }));
-  document.getElementById('undo').addEventListener('click', () => { touch(); strokes.pop(); redraw(); });
-  document.getElementById('clear').addEventListener('click', () => { touch(); strokes.length = 0; redraw(); });
 
   /* ---------- lightbox ---------- */
   const IMAGES = [
