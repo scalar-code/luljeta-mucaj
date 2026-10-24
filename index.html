@@ -231,6 +231,7 @@ blockquote cite { display: block; margin-top: 14px; font-style: normal; }
 .art-grid { columns: 3; column-gap: 28px; }
 .art-grid figure { break-inside: avoid; margin: 0 0 32px; display: flex; flex-direction: column; gap: 10px; }
 .art-grid figcaption { font-size: 15px; line-height: 1.4; }
+.art-grid figcaption .label + .label::before { content: " · "; }
 .vid { border-bottom: 1px solid var(--graphite); }
 .vid:hover { color: var(--ink); }
 
